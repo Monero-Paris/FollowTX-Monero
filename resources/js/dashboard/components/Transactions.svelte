@@ -8,15 +8,27 @@
 	}
 	let balance = {}
 
+	function formatLargeString(string) {
+
+		if ( ! string) {
+			return ''
+		}
+
+		const start = string.substring(0, 4)
+		const end = string.substring(string.length - 4)
+
+		return `${start}...${end}`
+	}
+
 	async function fetchTransactions() {
 		try {
 			const url = '/api/rpc'
 
 			const url_rpc = 'http://localhost:18089/json_rpc'
 
-			const object_rpc = { 
-				"jsonrpc":"2.0", 
-				"id":"0", 
+			const object_rpc = {
+				"jsonrpc":"2.0",
+				"id":"0",
 				"method":"get_transfers",
 				"params": {
 					"in": true,
@@ -34,7 +46,11 @@
 			const data = await response.data
 			const result = data.result
 
-			console.log(result)
+			if (! Object.keys(result).length) {
+				return
+			}
+
+			//console.log(result)
 
 			transactions = result
 
@@ -68,7 +84,7 @@
 
 			const data = await response.data
 			const result = data.result
-			console.log(result)
+			//console.log(result)
 
 			balance = result
 		} catch (error) {
@@ -77,19 +93,11 @@
 	}
 
 	fetchBalance()
-
-	function formatLargeString(string) {
-		const start = string.substring(0, 4)
-		const end = string.substring(string.length - 4)
-
-		return `${start}...${end}`
-	}
 </script>
 
 <div class="row mt-3">
 	<div class="col">
 		<h1>Transactions</h1>
-
 		<div>
 			<input type="text" class="form-control" placeholder="Search for txid payment_id or address">
 		</div>
@@ -140,13 +148,13 @@
 			<div class="card-body">
 				<table class="table">
 					<thead>
-						<tr>
-							<th>Address</th>
-							<th>Amount</th>
-							<th>Payment_id</th>
-							<th>Txid</th>
-							<th>Confirmation</th>
-						</tr>
+					<tr>
+						<th>Address</th>
+						<th>Amount</th>
+						<th>Payment_id</th>
+						<th>Txid</th>
+						<th>Confirmation</th>
+					</tr>
 					</thead>
 					<tbody>
 						{#each transactions.out as transaction}
@@ -162,7 +170,5 @@
 				</table>
 			</div>
 		</div>
-
-		
 	</div>
 </div>

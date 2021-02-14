@@ -2,7 +2,7 @@ import { writable } from 'svelte/store'
 
 // home network transactions payments
 
-export const view = writable('payments')
+export const view = writable('transactions')
 
 export const Helpers = {
 	

@@ -3635,7 +3635,7 @@ function get_each_context_1(ctx, list, i) {
   var child_ctx = ctx.slice();
   child_ctx[4] = list[i];
   return child_ctx;
-} // (122:6) {#each transactions.in as transaction}
+} // (130:6) {#each transactions.in as transaction}
 
 
 function create_each_block_1(ctx) {
@@ -3751,7 +3751,7 @@ function create_each_block_1(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(tr);
     }
   };
-} // (152:6) {#each transactions.out as transaction}
+} // (160:6) {#each transactions.out as transaction}
 
 
 function create_each_block(ctx) {
@@ -3976,7 +3976,7 @@ function create_fragment(ctx) {
       div8 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
       table1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("table");
       thead1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("thead");
-      thead1.innerHTML = "<tr><th>Address</th> \n\t\t\t\t\t\t\t<th>Amount</th> \n\t\t\t\t\t\t\t<th>Payment_id</th> \n\t\t\t\t\t\t\t<th>Txid</th> \n\t\t\t\t\t\t\t<th>Confirmation</th></tr>";
+      thead1.innerHTML = "<tr><th>Address</th> \n\t\t\t\t\t\t<th>Amount</th> \n\t\t\t\t\t\t<th>Payment_id</th> \n\t\t\t\t\t\t<th>Txid</th> \n\t\t\t\t\t\t<th>Confirmation</th></tr>";
       t36 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
       tbody1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("tbody");
 
@@ -4134,6 +4134,10 @@ function create_fragment(ctx) {
 }
 
 function formatLargeString(string) {
+  if (!string) {
+    return "";
+  }
+
   var start = string.substring(0, 4);
   var end = string.substring(string.length - 4);
   return "".concat(start, "...").concat(end);
@@ -4184,22 +4188,31 @@ function instance($$self, $$props, $$invalidate) {
             case 10:
               data = _context.sent;
               result = data.result;
-              console.log(result);
+
+              if (Object.keys(result).length) {
+                _context.next = 14;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 14:
+              //console.log(result)
               $$invalidate(0, transactions = result);
-              _context.next = 19;
+              _context.next = 20;
               break;
 
-            case 16:
-              _context.prev = 16;
+            case 17:
+              _context.prev = 17;
               _context.t0 = _context["catch"](0);
               sweetalert__WEBPACK_IMPORTED_MODULE_3___default()("Nope", "Nope", "error");
 
-            case 19:
+            case 20:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 16]]);
+      }, _callee, null, [[0, 17]]);
     }));
     return _fetchTransactions.apply(this, arguments);
   }
@@ -4240,23 +4253,23 @@ function instance($$self, $$props, $$invalidate) {
 
             case 10:
               data = _context2.sent;
-              result = data.result;
-              console.log(result);
+              result = data.result; //console.log(result)
+
               $$invalidate(1, balance = result);
-              _context2.next = 19;
+              _context2.next = 18;
               break;
 
-            case 16:
-              _context2.prev = 16;
+            case 15:
+              _context2.prev = 15;
               _context2.t0 = _context2["catch"](0);
               sweetalert__WEBPACK_IMPORTED_MODULE_3___default()("Nope", "Nope", "error");
 
-            case 19:
+            case 18:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 16]]);
+      }, _callee2, null, [[0, 15]]);
     }));
     return _fetchBalance.apply(this, arguments);
   }
@@ -6890,7 +6903,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var svelte_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/store */ "./node_modules/svelte/store/index.mjs");
  // home network transactions payments
 
-var view = (0,svelte_store__WEBPACK_IMPORTED_MODULE_0__.writable)('payments');
+var view = (0,svelte_store__WEBPACK_IMPORTED_MODULE_0__.writable)('transactions');
 var Helpers = {
   formatLargeString: function formatLargeString(string) {
     var start = string.substring(0, 4);
