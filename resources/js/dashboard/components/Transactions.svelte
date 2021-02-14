@@ -46,10 +46,6 @@
 			const data = await response.data
 			const result = data.result
 
-			if (! Object.keys(result).length) {
-				return
-			}
-
 			//console.log(result)
 
 			transactions = result
@@ -84,7 +80,7 @@
 
 			const data = await response.data
 			const result = data.result
-			//console.log(result)
+			// console.log(result)
 
 			balance = result
 		} catch (error) {
@@ -127,15 +123,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						{#each transactions.in as transaction}
-							<tr>
-								<td title="{transaction.address}">{ formatLargeString(transaction.address) }</td>
-								<td>{ transaction.amount }</td>
-								<td>{ transaction.payment_id }</td>
-								<td>{ formatLargeString(transaction.txid) }</td>
-								<td>{ transaction.confirmations }</td>
-							</tr>
-						{/each}
+						{#if transactions.in}
+							{#each transactions.in as transaction}
+								<tr>
+									<td title="{transaction.address}">{ formatLargeString(transaction.address) }</td>
+									<td>{ transaction.amount }</td>
+									<td>{ transaction.payment_id }</td>
+									<td>{ formatLargeString(transaction.txid) }</td>
+									<td>{ transaction.confirmations }</td>
+								</tr>
+							{/each}
+						{/if}
 					</tbody>
 				</table>
 			</div>
@@ -157,15 +155,17 @@
 					</tr>
 					</thead>
 					<tbody>
-						{#each transactions.out as transaction}
-							<tr>
-								<td title="{transaction.address}">{ formatLargeString(transaction.address) }</td>
-								<td>{ transaction.amount }</td>
-								<td>{ transaction.payment_id }</td>
-								<td>{ formatLargeString(transaction.txid) }</td>
-								<td>{ transaction.confirmations }</td>
-							</tr>
-						{/each}
+						{#if transactions.out}
+							{#each transactions.out as transaction}
+								<tr>
+									<td title="{transaction.address}">{ formatLargeString(transaction.address) }</td>
+									<td>{ transaction.amount }</td>
+									<td>{ transaction.payment_id }</td>
+									<td>{ formatLargeString(transaction.txid) }</td>
+									<td>{ transaction.confirmations }</td>
+								</tr>
+							{/each}
+						{/if}
 					</tbody>
 				</table>
 			</div>
