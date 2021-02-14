@@ -1,5 +1,5 @@
 const axios = require('axios')
-const Payment = require('../models/Payment')
+const Invoice = require('../models/Invoice')
 
 exports.tx = async (txid, io) => {
 
@@ -23,17 +23,17 @@ exports.tx = async (txid, io) => {
 	
 	const status = 'completed'
 
-	const payment = await Payment.findOne({
+	const invoice = await Invoice.findOne({
 		payment_id
 	})
-	payment.status = status
-	payment.transactions.push(txid)
-	payment.save()
+	invoice.status = status
+	invoice.transactions.push(txid)
+	invoice.save()
 
 
 	io.of('/gateway').emit('pop')
 	io.of('/dashboard').emit('update_payment', payment_id, status)
 
 	console.log('all done')
-	console.log(payment)
+	console.log(invoice)
 }

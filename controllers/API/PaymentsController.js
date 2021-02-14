@@ -1,12 +1,12 @@
 const axios = require('axios')
 const crypto = require('crypto')
-const Payment = require('../../models/Payment')
+const Invoice = require('../../models/Invoice')
 
 exports.index = async (request, response) => {
 
-	const payments = await Payment.find().sort({'_id': -1})
+	const invoice = await Invoice.find().sort({'_id': -1})
 
-	return response.json(payments)	
+	return response.json(invoice)
 }
 
 exports.store = async (request,response) => {
@@ -57,27 +57,27 @@ exports.store = async (request,response) => {
 		uri
 	}
 
-	const payment = await Payment.create(doc)
+	const invoice = await Invoice.create(doc)
 
-	await response.json(payment) 
+	await response.json(invoice)
 }
 
 exports.show = async (request,response) => {
 
 	const id = request.body.id
-	const payment = await Payment.findById(id)
+	const invoice = await Payment.findById(id)
 
-	await response.json(data)
+	await response.json(invoice)
 }
 
 exports.update = async (request,response) => {
 
 	const id = request.body.id
-	const payment = await Payment.findById(id)
+	const invoice = await Invoice.findById(id)
 }
 
 exports.destroy = async (request,response) => {
 	
 	const id = request.body.id
-	const payment = await Payment.findById(id)
+	const invoice = await Invoice.findById(id)
 }

@@ -23,6 +23,6 @@ const schema = new Schema(
 	}
 )
 
-const Payment = mongoose.model('Payment', schema)
+const Invoice = mongoose.model('Invoice', schema)
 
-module.exports = Payment
+module.exports = Invoice
