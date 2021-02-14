@@ -1,12 +1,41 @@
 const axios = require('axios')
-const crypto = require('crypto')
+//const crypto = require('crypto')
 const Invoice = require('../../models/Invoice')
 
 exports.index = async (request, response) => {
 
-	const invoice = await Invoice.find().sort({'_id': -1})
+	let invoices = await Invoice
+		.find()
+		.sort({'_id': -1})
+		.limit(parseInt(request.query.limit) ?? 10)
 
-	return response.json(invoice)
+	// for home
+	if (request.query.today) {
+		const now = new Date()
+		const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+		invoices = await Invoice
+			.find({ created_at: {
+				$gte: startOfToday
+			}})
+			.estimatedDocumentCount()
+	}
+
+	if (request.query.week) {
+		invoices = await Invoice
+			.find({
+				timestamp: {
+					$lte: new Date(),
+					$gte: new Date( Date() - 7 )
+				}
+			})
+			.estimatedDocumentCount()
+	}
+
+	if (request.query.total) {
+		invoices = await Invoice.estimatedDocumentCount()
+	}
+
+	return response.json(invoices)
 }
 
 exports.store = async (request,response) => {

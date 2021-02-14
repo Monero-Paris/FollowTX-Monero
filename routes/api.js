@@ -5,7 +5,7 @@ const SetupController = require('../controllers/API/SetupController')
 
 const RPC_Controller = require('../controllers/API/RPC_Controller')
 
-const PaymentsController = require('../controllers/API/PaymentsController')
+const InvoicesController = require('../controllers/API/InvoicesController')
 
 
 router.post('/setup/database/test', SetupController.databaseTest)
@@ -13,10 +13,10 @@ router.post('/setup/database/create-user', SetupController.databaseCreateUser)
 
 router.post('/rpc', RPC_Controller.fetch)
 
-router.get('/payments', PaymentsController.index)
-router.post('/payments', PaymentsController.store)
-router.get('/payments/:id', PaymentsController.show)
-router.put('/payments/:id', PaymentsController.update)
-router.delete('/payments/:id', PaymentsController.destroy)
+router.get('/invoices', InvoicesController.index)
+router.post('/invoices', InvoicesController.store)
+router.get('/invoices/:id', InvoicesController.show)
+router.put('/invoices/:id', InvoicesController.update)
+router.delete('/invoices/:id', InvoicesController.destroy)
 
 module.exports = router
