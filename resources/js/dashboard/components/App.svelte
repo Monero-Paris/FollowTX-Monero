@@ -6,6 +6,7 @@
 	import Transactions from './Transactions'
 	import Invoices from './Invoices'
 	import Processing from './Processing'
+	import Account from './Account'
 </script>
 
 <div class="container-fluid">
@@ -38,7 +39,7 @@
 						</span>
 					</li>
 
-					<li class="{ $view === 'settings' ? 'active' : '' }" on:click={ () => $view = 'settings' }>
+					<li class="{ $view === 'account' ? 'active' : '' }" on:click={ () => $view = 'account' }>
 						<span>
 							<i class="bi bi-gear"></i> Account setting
 						</span>
@@ -69,10 +70,12 @@
 			 		<Home />
 			 	{:else if $view === 'network'}
 			 		<Network />
+				{:else if $view === 'invoices'}
+					<Invoices />
 			 	{:else if $view === 'transactions'}
 			 		<Transactions />
-			 	{:else if $view === 'invoices'}
-			 		<Invoices />
+				{:else if $view === 'account'}
+					<Account />
 				{:else if $view === 'processing'}
 					<Processing />
 				{/if}

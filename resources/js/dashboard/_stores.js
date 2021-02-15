@@ -2,7 +2,7 @@ import { writable } from 'svelte/store'
 import axios from "axios";
 
 // home network invoices transactions payments
-export const view = writable('invoices')
+export const view = writable('account')
 
 export const colors = {
 	initialised: 'secondary',
