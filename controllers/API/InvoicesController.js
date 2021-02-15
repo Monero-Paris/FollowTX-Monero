@@ -2,6 +2,16 @@ const axios = require('axios')
 //const crypto = require('crypto')
 const Invoice = require('../../models/Invoice')
 
+const Converter = {
+	xmrToAtomicUnits(number) {
+		return number * 1_000_000_000_000
+	},
+
+	atomicUnitsToXmr(number) {
+		return (number / 1_000_000_000_000).toFixed(12)
+	}
+}
+
 exports.index = async (request, response) => {
 
 	let invoices = await Invoice
@@ -56,7 +66,9 @@ exports.store = async (request,response) => {
 	const integrated_address = result.integrated_address
 	const payment_id = result.payment_id
 
-	const amount = request.body.amount
+	let amount = request.body.amount
+	amount = Converter.xmrToAtomicUnits(amount)
+
 	const tx_description = request.body.tx_description ?? ''
 
 	console.log(amount)

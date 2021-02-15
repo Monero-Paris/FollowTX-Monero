@@ -1,42 +1,40 @@
 <script>
 	import { onMount } from 'svelte';
 	import axios from 'axios'
+	import { Helpers, colors, Converter } from '../_stores'
+	import ioClient from 'socket.io-client'
 
-	let payments = []
+	// use full
+	import { modal } from 'bootstrap'
 
-	// load payments
+	let invoices = []
+
+	// load invoices
 	onMount(async () => {
-		const response = await axios.get('/api/payments')
+		const response = await axios.get('/api/invoices')
 		const data = await response.data
 
-		payments = data
+		invoices = data
 	})
 
 	let amount = 12
 	let tx_description = 'a  short tx'
-	async function createPayment() {
 
-		const response = await axios.post('/api/payments', { amount, tx_description })
+	async function createPayment() {
+		const response = await axios.post('/api/invoices', { amount, tx_description })
 		const data = await response.data
 
 		console.log(data)
 
-		payments.unshift(data)
+		invoices.unshift(data)
 
-		payments = payments
+		invoices = invoices
 	}
 
-	const colors = {
-		initialised: 'secondary',
-		pending: 'primary',
-		completed: 'success',
-		cancelled: 'danger'
-	}
-
-	import { Helpers } from '../_stores'
 
 
-	import ioClient from 'socket.io-client'
+
+
 
 	let io = ioClient('/dashboard', {
 		query: {
@@ -46,28 +44,56 @@
 
 	function setPaymentStatus(id, status) {
 
-		payments.find(element => element._id === id).status = status
+		invoices.find(element => element._id === id).status = status
 
-		payments = payments
+		invoices = invoices
 	}
 	
 	io.on('update_payment', (id, status) => {
 		setPaymentStatus(id, status)
 	})
 	
-</script> 
+</script>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="create-new-invoice" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Create new invoice</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form on:submit|preventDefault={ createPayment }>
+					<div class="mb-3">
+						<span>Amount</span>
+						<input type="text" placeholder="amount" bind:value={amount} class="form-control">
+					</div>
+
+					<div class="mb-3">
+						<span>Description</span>
+						<input type="text" placeholder="tx_description" bind:value={tx_description} class="form-control">
+					</div>
+
+					<button type="submit" class="btn btn-primary">Send</button>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="row mt-3">
-	<h1>Payments</h1>
+	<h1 class="h3">Invoices</h1>
 	<div class="col-md">
-
-		<div>
-			<form on:submit|preventDefault={ createPayment }>
-				<input type="text" placeholder="amount" bind:value={amount} >
-				<input type="text" placeholder="tx_description" bind:value={tx_description} >
-				<button type="submit">Send</button>
-			</form>
-		</div>
+		<button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#create-new-invoice">
+			Create new invoice
+		</button>
 	
 		<div class="card">
 			<div class="card-body">
@@ -83,14 +109,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						{#each payments as payment }
+						{#each invoices as invoice }
 							<tr>
-								<td>{ payment._id }</td>
-								<td><i class="bi bi-circle-fill text-{ colors[payment.status] }"></i> { payment.status }</td>
-								<td>{ payment.amount }</td>
-								<td>{ Helpers.formatLargeString(payment.payment_id) }</td>
-								<td>{ Helpers.formatTime(payment.created_at) }</td>
-								<td>{ Helpers.formatTime(payment.updated_at) }</td>
+								<td>{ invoice._id }</td>
+								<td><i class="bi bi-circle-fill text-{ colors[invoice.status] }"></i> { invoice.status }</td>
+								<td>{ Converter.atomicUnitsToXmr(invoice.amount) }</td>
+								<td>{ Helpers.formatLargeString(invoice.payment_id) }</td>
+								<td>{ Helpers.formatTime(invoice.created_at) }</td>
+								<td>{ Helpers.formatTime(invoice.updated_at) }</td>
 							</tr>
 						{/each}
 					</tbody>
