@@ -3067,16 +3067,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../_stores */ "./resources/js/dashboard/_stores.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3093,10 +3090,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -3115,11 +3108,74 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function get_each_context(ctx, list, i) {
   var child_ctx = ctx.slice();
-  child_ctx[4] = list[i];
+  child_ctx[3] = list[i];
   return child_ctx;
-} // (99:6) {#each Object.keys(info) as key}
+}
+
+function get_each_context_1(ctx, list, i) {
+  var child_ctx = ctx.slice();
+  child_ctx[3] = list[i];
+  return child_ctx;
+} // (98:5) {#each Object.keys(wallet) as key}
+
+
+function create_each_block_1(ctx) {
+  var tr;
+  var td0;
+  var t0_value =
+  /*key*/
+  ctx[3] + "";
+  var t0;
+  var t1;
+  var td1;
+  var t2_value =
+  /*wallet*/
+  ctx[2][
+  /*key*/
+  ctx[3]] + "";
+  var t2;
+  var t3;
+  return {
+    c: function c() {
+      tr = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("tr");
+      td0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("td");
+      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t0_value);
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      td1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("td");
+      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t2_value);
+      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, tr, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(tr, td0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(td0, t0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(tr, t1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(tr, td1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(td1, t2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(tr, t3);
+    },
+    p: function p(ctx, dirty) {
+      if (dirty &
+      /*wallet*/
+      4 && t0_value !== (t0_value =
+      /*key*/
+      ctx[3] + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t0, t0_value);
+      if (dirty &
+      /*wallet*/
+      4 && t2_value !== (t2_value =
+      /*wallet*/
+      ctx[2][
+      /*key*/
+      ctx[3]] + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2, t2_value);
+    },
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(tr);
+    }
+  };
+} // (133:5) {#each Object.keys(daemon) as key}
 
 
 function create_each_block(ctx) {
@@ -3127,216 +3183,251 @@ function create_each_block(ctx) {
   var td0;
   var t0_value =
   /*key*/
-  ctx[4] + "";
+  ctx[3] + "";
   var t0;
   var t1;
   var td1;
   var t2_value =
-  /*info*/
+  /*daemon*/
   ctx[0][
   /*key*/
-  ctx[4]] + "";
+  ctx[3]] + "";
   var t2;
   var t3;
   return {
     c: function c() {
-      tr = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("tr");
-      td0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("td");
-      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(t0_value);
-      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      td1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("td");
-      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(t2_value);
-      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
+      tr = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("tr");
+      td0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("td");
+      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t0_value);
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      td1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("td");
+      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t2_value);
+      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, tr, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(tr, td0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(td0, t0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(tr, t1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(tr, td1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(td1, t2);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(tr, t3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, tr, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(tr, td0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(td0, t0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(tr, t1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(tr, td1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(td1, t2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(tr, t3);
     },
     p: function p(ctx, dirty) {
       if (dirty &
-      /*info*/
+      /*daemon*/
       1 && t0_value !== (t0_value =
       /*key*/
-      ctx[4] + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t0, t0_value);
+      ctx[3] + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t0, t0_value);
       if (dirty &
-      /*info*/
+      /*daemon*/
       1 && t2_value !== (t2_value =
-      /*info*/
+      /*daemon*/
       ctx[0][
       /*key*/
-      ctx[4]] + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t2, t2_value);
+      ctx[3]] + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2, t2_value);
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(tr);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(tr);
     }
   };
 }
 
 function create_fragment(ctx) {
-  var div15;
+  var div18;
   var h1;
   var t1;
-  var div5;
+  var div8;
+  var div4;
   var t8;
-  var div14;
-  var div10;
-  var div6;
+  var div7;
+  var div5;
   var t10;
-  var div9;
-  var span2;
-  var t11_value =
-  /*info*/
-  ctx[0].height_without_bootstrap + "";
+  var div6;
+  var table0;
+  var tbody0;
   var t11;
-  var t12;
-  var t13_value =
-  /*info*/
-  ctx[0].height + "";
+  var div17;
+  var div13;
+  var div9;
   var t13;
+  var div12;
+  var span2;
+  var t14_value =
+  /*daemon*/
+  ctx[0].height_without_bootstrap + "";
   var t14;
-  var span3;
   var t15;
+  var t16_value =
+  /*daemon*/
+  ctx[0].height + "";
   var t16;
   var t17;
-  var div8;
-  var div7;
-  var div7_class_value;
+  var span3;
   var t18;
-  var div13;
-  var div11;
   var t19;
-  var button;
+  var t20;
+  var div11;
+  var div10;
+  var div10_class_value;
   var t21;
-  var div12;
-  var table;
-  var tbody;
-  var mounted;
-  var dispose;
+  var div16;
+  var div14;
+  var t23;
+  var div15;
+  var table1;
+  var tbody1;
+  var each_value_1 = Object.keys(
+  /*wallet*/
+  ctx[2]);
+  var each_blocks_1 = [];
+
+  for (var i = 0; i < each_value_1.length; i += 1) {
+    each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+  }
+
   var each_value = Object.keys(
-  /*info*/
+  /*daemon*/
   ctx[0]);
   var each_blocks = [];
 
-  for (var i = 0; i < each_value.length; i += 1) {
-    each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+  for (var _i = 0; _i < each_value.length; _i += 1) {
+    each_blocks[_i] = create_each_block(get_each_context(ctx, each_value, _i));
   }
 
   return {
     c: function c() {
-      div15 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      h1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("h1");
+      div18 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      h1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("h1");
       h1.textContent = "Network";
-      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div5.innerHTML = "<div class=\"card mt-3\"><div class=\"card-header\">Wallet</div> \n\t\t\t<div class=\"card-body\"><span class=\"\">22332323 / 232323232323233</span> |\n\t\t\t\t<span>90%</span>  \n\t\t\t\t<div class=\"progress\"><div class=\"progress-bar\" role=\"progressbar\" style=\"width: 90%;\" aria-valuenow=\"90\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div></div></div>";
-      t8 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div14 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div10 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div6.textContent = "Daemon";
-      t10 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div9 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      span2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("span");
-      t11 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(t11_value);
-      t12 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(" / ");
-      t13 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(t13_value);
-      t14 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(" |\n\t\t\t\t");
-      span3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("span");
-      t15 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(
-      /*percent_sync*/
-      ctx[1]);
-      t16 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(" %");
-      t17 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div8 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div7 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      t18 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div13 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div11 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      t19 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)("Network info ");
-      button = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("button");
-      button.textContent = "Refresh";
-      t21 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div12 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      table = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("table");
-      tbody = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("tbody");
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div8 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div4.innerHTML = "<div class=\"card-header\">Wallet sync</div> \n\t\t\t<div class=\"card-body\"><span class=\"\">22332323 / 232323232323233</span> |\n\t\t\t\t<span>90%</span> \n\t\t\t\t<div class=\"progress\"><div class=\"progress-bar\" role=\"progressbar\" style=\"width: 90%;\" aria-valuenow=\"90\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div></div>";
+      t8 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div7 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div5.textContent = "Wallet info";
+      t10 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      table0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("table");
+      tbody0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("tbody");
 
-      for (var _i = 0; _i < each_blocks.length; _i += 1) {
-        each_blocks[_i].c();
+      for (var _i2 = 0; _i2 < each_blocks_1.length; _i2 += 1) {
+        each_blocks_1[_i2].c();
       }
 
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(h1, "class", "h3");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div5, "class", "col-md-6");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div6, "class", "card-header");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(span2, "class", "");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div7, "class", div7_class_value = "progress-bar " + (
-      /*info*/
+      t11 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div17 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div13 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div9 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div9.textContent = "Daemon";
+      t13 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div12 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      span2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("span");
+      t14 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t14_value);
+      t15 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(" / ");
+      t16 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t16_value);
+      t17 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(" |\n\t\t\t\t");
+      span3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("span");
+      t18 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(
+      /*percent_sync*/
+      ctx[1]);
+      t19 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(" %");
+      t20 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div11 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div10 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      t21 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div16 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div14 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div14.textContent = "Network info";
+      t23 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div15 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      table1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("table");
+      tbody1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("tbody");
+
+      for (var _i3 = 0; _i3 < each_blocks.length; _i3 += 1) {
+        each_blocks[_i3].c();
+      }
+
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(h1, "class", "h3");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div4, "class", "card mt-3");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div5, "class", "card-header");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(table0, "class", "table table-bordered table-striped");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(table0, "table-layout", "fixed");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(table0, "word-wrap", "break-word");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div6, "class", "card-body");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div7, "class", "card mt-3");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div8, "class", "col-md-6");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div9, "class", "card-header");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(span2, "class", "");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div10, "class", div10_class_value = "progress-bar " + (
+      /*daemon*/
       ctx[0]["synchronized"] ? "bg-success" : "progress-bar-striped progress-bar-animated"));
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div7, "role", "progressbar");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_style)(div7, "width",
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div10, "role", "progressbar");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(div10, "width",
       /*percent_sync*/
       ctx[1] + "%");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div7, "aria-valuenow",
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div10, "aria-valuenow",
       /*percent_sync*/
       ctx[1]);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div7, "aria-valuemin", "0");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div7, "aria-valuemax", "100");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div8, "class", "progress");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div9, "class", "card-body");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div10, "class", "card mt-3");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(button, "class", "btn btn-secondary");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div11, "class", "card-header d-flex justify-content-between align-items-center");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(table, "class", "table table-bordered table-striped");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div12, "class", "card-body");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div13, "class", "card mt-3");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div14, "class", "col-md-6");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div15, "class", "row mt-3");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div10, "aria-valuemin", "0");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div10, "aria-valuemax", "100");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div11, "class", "progress");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div12, "class", "card-body");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div13, "class", "card mt-3");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div14, "class", "card-header d-flex justify-content-between align-items-center");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(table1, "class", "table table-bordered table-striped");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div15, "class", "card-body");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div16, "class", "card mt-3");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div17, "class", "col-md-6");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div18, "class", "row mt-3");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, div15, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div15, h1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div15, t1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div15, div5);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div15, t8);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div15, div14);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div14, div10);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div10, div6);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div10, t10);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div10, div9);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, span2);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(span2, t11);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(span2, t12);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(span2, t13);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, t14);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, span3);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(span3, t15);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(span3, t16);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, t17);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div9, div8);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div8, div7);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div14, t18);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div14, div13);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div13, div11);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div11, t19);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div11, button);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div13, t21);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div13, div12);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div12, table);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(table, tbody);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div18, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div18, h1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div18, t1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div18, div8);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div8, div4);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div8, t8);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div8, div7);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div7, div5);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div7, t10);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div7, div6);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div6, table0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(table0, tbody0);
 
-      for (var _i2 = 0; _i2 < each_blocks.length; _i2 += 1) {
-        each_blocks[_i2].m(tbody, null);
+      for (var _i4 = 0; _i4 < each_blocks_1.length; _i4 += 1) {
+        each_blocks_1[_i4].m(tbody0, null);
       }
 
-      if (!mounted) {
-        dispose = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(button, "click",
-        /*click_handler*/
-        ctx[3]);
-        mounted = true;
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div18, t11);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div18, div17);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div17, div13);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div13, div9);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div13, t13);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div13, div12);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div12, span2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(span2, t14);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(span2, t15);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(span2, t16);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div12, t17);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div12, span3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(span3, t18);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(span3, t19);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div12, t20);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div12, div11);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div11, div10);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div17, t21);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div17, div16);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div16, div14);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div16, t23);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div16, div15);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div15, table1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(table1, tbody1);
+
+      for (var _i5 = 0; _i5 < each_blocks.length; _i5 += 1) {
+        each_blocks[_i5].m(tbody1, null);
       }
     },
     p: function p(ctx, _ref) {
@@ -3344,33 +3435,63 @@ function create_fragment(ctx) {
           dirty = _ref2[0];
 
       if (dirty &
-      /*info*/
-      1 && t11_value !== (t11_value =
-      /*info*/
-      ctx[0].height_without_bootstrap + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t11, t11_value);
+      /*wallet, Object*/
+      4) {
+        each_value_1 = Object.keys(
+        /*wallet*/
+        ctx[2]);
+
+        var _i6;
+
+        for (_i6 = 0; _i6 < each_value_1.length; _i6 += 1) {
+          var child_ctx = get_each_context_1(ctx, each_value_1, _i6);
+
+          if (each_blocks_1[_i6]) {
+            each_blocks_1[_i6].p(child_ctx, dirty);
+          } else {
+            each_blocks_1[_i6] = create_each_block_1(child_ctx);
+
+            each_blocks_1[_i6].c();
+
+            each_blocks_1[_i6].m(tbody0, null);
+          }
+        }
+
+        for (; _i6 < each_blocks_1.length; _i6 += 1) {
+          each_blocks_1[_i6].d(1);
+        }
+
+        each_blocks_1.length = each_value_1.length;
+      }
+
       if (dirty &
-      /*info*/
-      1 && t13_value !== (t13_value =
-      /*info*/
-      ctx[0].height + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t13, t13_value);
+      /*daemon*/
+      1 && t14_value !== (t14_value =
+      /*daemon*/
+      ctx[0].height_without_bootstrap + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t14, t14_value);
+      if (dirty &
+      /*daemon*/
+      1 && t16_value !== (t16_value =
+      /*daemon*/
+      ctx[0].height + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t16, t16_value);
       if (dirty &
       /*percent_sync*/
-      2) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t15,
+      2) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t18,
       /*percent_sync*/
       ctx[1]);
 
       if (dirty &
-      /*info*/
-      1 && div7_class_value !== (div7_class_value = "progress-bar " + (
-      /*info*/
+      /*daemon*/
+      1 && div10_class_value !== (div10_class_value = "progress-bar " + (
+      /*daemon*/
       ctx[0]["synchronized"] ? "bg-success" : "progress-bar-striped progress-bar-animated"))) {
-        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div7, "class", div7_class_value);
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div10, "class", div10_class_value);
       }
 
       if (dirty &
       /*percent_sync*/
       2) {
-        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_style)(div7, "width",
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_style)(div10, "width",
         /*percent_sync*/
         ctx[1] + "%");
       }
@@ -3378,54 +3499,53 @@ function create_fragment(ctx) {
       if (dirty &
       /*percent_sync*/
       2) {
-        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div7, "aria-valuenow",
+        (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div10, "aria-valuenow",
         /*percent_sync*/
         ctx[1]);
       }
 
       if (dirty &
-      /*info, Object*/
+      /*daemon, Object*/
       1) {
         each_value = Object.keys(
-        /*info*/
+        /*daemon*/
         ctx[0]);
 
-        var _i3;
+        var _i7;
 
-        for (_i3 = 0; _i3 < each_value.length; _i3 += 1) {
-          var child_ctx = get_each_context(ctx, each_value, _i3);
+        for (_i7 = 0; _i7 < each_value.length; _i7 += 1) {
+          var _child_ctx = get_each_context(ctx, each_value, _i7);
 
-          if (each_blocks[_i3]) {
-            each_blocks[_i3].p(child_ctx, dirty);
+          if (each_blocks[_i7]) {
+            each_blocks[_i7].p(_child_ctx, dirty);
           } else {
-            each_blocks[_i3] = create_each_block(child_ctx);
+            each_blocks[_i7] = create_each_block(_child_ctx);
 
-            each_blocks[_i3].c();
+            each_blocks[_i7].c();
 
-            each_blocks[_i3].m(tbody, null);
+            each_blocks[_i7].m(tbody1, null);
           }
         }
 
-        for (; _i3 < each_blocks.length; _i3 += 1) {
-          each_blocks[_i3].d(1);
+        for (; _i7 < each_blocks.length; _i7 += 1) {
+          each_blocks[_i7].d(1);
         }
 
         each_blocks.length = each_value.length;
       }
     },
-    i: svelte_internal__WEBPACK_IMPORTED_MODULE_1__.noop,
-    o: svelte_internal__WEBPACK_IMPORTED_MODULE_1__.noop,
+    i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
+    o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(div15);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.destroy_each)(each_blocks, detaching);
-      mounted = false;
-      dispose();
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div18);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_each)(each_blocks_1, detaching);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_each)(each_blocks, detaching);
     }
   };
 }
 
 function instance($$self, $$props, $$invalidate) {
-  var info = {
+  var daemon = {
     height: null,
     height_without_bootstrap: null,
     nettype: null,
@@ -3436,78 +3556,54 @@ function instance($$self, $$props, $$invalidate) {
     update_available: null,
     free_space: null
   };
-
-  function getInfo() {
-    return _getInfo.apply(this, arguments);
-  }
-
-  function _getInfo() {
-    _getInfo = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var url, url_rpc, object_rpc, object_complete, reponse, data, result, _i4, _Object$entries, _Object$entries$_i, key, value;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              url = "/api/rpc";
-              url_rpc = "http://localhost:38081/json_rpc";
-              object_rpc = {
-                "jsonrpc": "2.0",
-                "id": "0",
-                "method": "get_info",
-                "params": {}
-              };
-              object_complete = {
-                url_rpc: url_rpc,
-                object_rpc: object_rpc
-              };
-              _context.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post(url, object_complete);
-
-            case 7:
-              reponse = _context.sent;
-              _context.next = 10;
-              return reponse.data;
-
-            case 10:
-              data = _context.sent;
-              result = data.result;
-
-              for (_i4 = 0, _Object$entries = Object.entries(info); _i4 < _Object$entries.length; _i4++) {
-                _Object$entries$_i = _slicedToArray(_Object$entries[_i4], 2), key = _Object$entries$_i[0], value = _Object$entries$_i[1];
-                $$invalidate(0, info[key] = result[key], info);
-              }
-
-              console.log(info);
-              _context.next = 19;
-              break;
-
-            case 16:
-              _context.prev = 16;
-              _context.t0 = _context["catch"](0);
-              sweetalert__WEBPACK_IMPORTED_MODULE_3___default()("Nope", "Nope", "error");
-
-            case 19:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[0, 16]]);
-    }));
-    return _getInfo.apply(this, arguments);
-  }
-
-  getInfo().then(function () {
-    return $$invalidate(1, percent_sync = info.height_without_bootstrap * 100 / info.height);
-  });
   var percent_sync;
-
-  var click_handler = function click_handler() {
-    return getInfo();
+  (0,_stores__WEBPACK_IMPORTED_MODULE_3__.fetchDataFromRpc)("daemon", {
+    "jsonrpc": "2.0",
+    "id": "0",
+    "method": "get_info",
+    "params": {}
+  }).then(function (data) {
+    $$invalidate(0, daemon.height = data.height, daemon);
+    $$invalidate(0, daemon.height_without_bootstrap = data.height_without_bootstrap, daemon);
+    $$invalidate(0, daemon.nettype = data.nettype, daemon);
+    $$invalidate(0, daemon.status = data.status, daemon);
+    $$invalidate(0, daemon["synchronized"] = data["synchronized"], daemon);
+    $$invalidate(0, daemon.busy_syncing = data.busy_syncing, daemon);
+    $$invalidate(0, daemon.version = data.version, daemon);
+    $$invalidate(0, daemon.busy_syncing = data.busy_syncing, daemon);
+    $$invalidate(0, daemon.update_available = data.update_available, daemon);
+    $$invalidate(0, daemon.free_space = data.free_space, daemon);
+    $$invalidate(1, percent_sync = daemon.height_without_bootstrap * 100 / daemon.height);
+  });
+  var wallet = {
+    address: "",
+    balance: ""
   };
-
-  return [info, percent_sync, getInfo, click_handler];
+  (0,_stores__WEBPACK_IMPORTED_MODULE_3__.fetchDataFromRpc)("wallet", {
+    "jsonrpc": "2.0",
+    "id": "0",
+    "method": "get_address",
+    "params": {}
+  }).then(function (data) {
+    return $$invalidate(2, wallet.address = data.address, wallet);
+  });
+  (0,_stores__WEBPACK_IMPORTED_MODULE_3__.fetchDataFromRpc)("wallet", {
+    "jsonrpc": "2.0",
+    "id": "0",
+    "method": "get_balance",
+    "params": {}
+  }).then(function (data) {
+    return $$invalidate(2, wallet.balance = data.balance, wallet);
+  });
+  (0,_stores__WEBPACK_IMPORTED_MODULE_3__.fetchDataFromRpc)("wallet", {
+    "jsonrpc": "2.0",
+    "id": "0",
+    "method": "get_version",
+    "params": {}
+  }).then(function (data) {
+    return $$invalidate(2, wallet.version = data.version, wallet);
+  });
+  return [daemon, percent_sync, wallet];
 }
 
 var Network = /*#__PURE__*/function (_SvelteComponent) {
@@ -3521,12 +3617,12 @@ var Network = /*#__PURE__*/function (_SvelteComponent) {
     _classCallCheck(this, Network);
 
     _this = _super.call(this);
-    (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.init)(_assertThisInitialized(_this), options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_1__.safe_not_equal, {});
+    (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.init)(_assertThisInitialized(_this), options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__.safe_not_equal, {});
     return _this;
   }
 
   return Network;
-}(svelte_internal__WEBPACK_IMPORTED_MODULE_1__.SvelteComponent);
+}(svelte_internal__WEBPACK_IMPORTED_MODULE_0__.SvelteComponent);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Network);
 
@@ -7545,12 +7641,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "view": () => /* binding */ view,
 /* harmony export */   "colors": () => /* binding */ colors,
 /* harmony export */   "Helpers": () => /* binding */ Helpers,
-/* harmony export */   "Converter": () => /* binding */ Converter
+/* harmony export */   "Converter": () => /* binding */ Converter,
+/* harmony export */   "fetchDataFromRpc": () => /* binding */ fetchDataFromRpc
 /* harmony export */ });
-/* harmony import */ var svelte_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/store */ "./node_modules/svelte/store/index.mjs");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var svelte_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! svelte/store */ "./node_modules/svelte/store/index.mjs");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
  // home network transactions payments
 
-var view = (0,svelte_store__WEBPACK_IMPORTED_MODULE_0__.writable)('home');
+var view = (0,svelte_store__WEBPACK_IMPORTED_MODULE_1__.writable)('network');
 var colors = {
   initialised: 'secondary',
   pending: 'primary',
@@ -7581,6 +7689,49 @@ var Converter = {
     return (number / 1000000000000).toFixed(12);
   }
 };
+function fetchDataFromRpc(_x, _x2) {
+  return _fetchDataFromRpc.apply(this, arguments);
+}
+
+function _fetchDataFromRpc() {
+  _fetchDataFromRpc = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(type, object_rpc) {
+    var url_rpc, url, object_complete, response, data, result;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            url_rpc = {
+              daemon: 'http://localhost:38081/json_rpc',
+              wallet: 'http://localhost:18089/json_rpc'
+            };
+            url_rpc = url_rpc[type];
+            url = '/api/rpc';
+            object_complete = {
+              url_rpc: url_rpc,
+              object_rpc: object_rpc
+            };
+            _context.next = 6;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().post(url, object_complete);
+
+          case 6:
+            response = _context.sent;
+            _context.next = 9;
+            return response.data;
+
+          case 9:
+            data = _context.sent;
+            result = data.result;
+            return _context.abrupt("return", result);
+
+          case 12:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _fetchDataFromRpc.apply(this, arguments);
+}
 
 /***/ }),
 
