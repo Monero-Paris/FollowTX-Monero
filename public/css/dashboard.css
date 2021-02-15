@@ -10230,6 +10230,10 @@ body {
   color: #71748d;
 }
 
+a {
+  text-decoration: none;
+}
+
 #sidebar {
   background: #0e0c28;
   min-height: 100vh;
@@ -10266,5 +10270,9 @@ header {
 
 header .nav_item {
   margin: 0 1rem;
+}
+
+.bi-clipboard {
+  cursor: pointer;
 }
 

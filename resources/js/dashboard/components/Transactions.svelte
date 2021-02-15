@@ -1,99 +1,35 @@
 <script>
-	import axios from 'axios'
-	import swal from 'sweetalert'
+	import { fetchDataFromRpc, Helpers } from '../_stores'
 
 	let transactions = {
 		in: [],
 		out: []
 	}
+
+	fetchDataFromRpc('wallet', {
+		"jsonrpc":"2.0",
+		"id":"0",
+		"method":"get_transfers",
+		"params": {
+			"in": true,
+			"out": true
+		}
+	}).then(data => transactions = data)
+
 	let balance = {}
-
-	function formatLargeString(string) {
-
-		if ( ! string) {
-			return ''
+	fetchDataFromRpc('wallet', {
+		"jsonrpc":"2.0",
+		"id":"0",
+		"method":"get_balance",
+		"params": {
 		}
+	}).then(data => balance = data)
 
-		const start = string.substring(0, 4)
-		const end = string.substring(string.length - 4)
-
-		return `${start}...${end}`
-	}
-
-	async function fetchTransactions() {
-		try {
-			const url = '/api/rpc'
-
-			const url_rpc = 'http://localhost:18089/json_rpc'
-
-			const object_rpc = {
-				"jsonrpc":"2.0",
-				"id":"0",
-				"method":"get_transfers",
-				"params": {
-					"in": true,
-					"out": true
-				}
-			}
-
-			const object_complete = {
-				url_rpc,
-				object_rpc
-			}
-
-			const response = await axios.post(url, object_complete)
-
-			const data = await response.data
-			const result = data.result
-
-			//console.log(result)
-
-			transactions = result
-
-		} catch (error) {
-			swal('Nope', 'Nope', 'error')
-		}
-	}
-
-	fetchTransactions()
-
-	async function fetchBalance() {
-		try {
-			const url = '/api/rpc'
-
-			const url_rpc = 'http://localhost:18089/json_rpc'
-
-			const object_rpc = {
-				"jsonrpc":"2.0",
-				"id":"0",
-				"method":"get_balance",
-				"params": {
-				}
-			}
-
-			const object_complete = {
-				url_rpc,
-				object_rpc
-			}
-
-			const response = await axios.post(url, object_complete)
-
-			const data = await response.data
-			const result = data.result
-			// console.log(result)
-
-			balance = result
-		} catch (error) {
-			swal('Nope', 'Nope', 'error')
-		}
-	}
-
-	fetchBalance()
 </script>
 
 <div class="row mt-3">
 	<div class="col">
-		<h1>Transactions</h1>
+		<h1 class="h3">Transactions</h1>
 		<div>
 			<input type="text" class="form-control" placeholder="Search for txid payment_id or address">
 		</div>
@@ -126,10 +62,10 @@
 						{#if transactions.in}
 							{#each transactions.in as transaction}
 								<tr>
-									<td title="{transaction.address}">{ formatLargeString(transaction.address) }</td>
+									<td title="{transaction.address}"><span on:click={ () => '' }>{ Helpers.formatLargeString(transaction.address) }</span> <i class="bi bi-clipboard"></i></td>
 									<td>{ transaction.amount }</td>
 									<td>{ transaction.payment_id }</td>
-									<td>{ formatLargeString(transaction.txid) }</td>
+									<td><span on:click={ () => '' }>{ Helpers.formatLargeString(transaction.txid) }</span> <i class="bi bi-clipboard"></i></td>
 									<td>{ transaction.confirmations }</td>
 								</tr>
 							{/each}
@@ -158,10 +94,10 @@
 						{#if transactions.out}
 							{#each transactions.out as transaction}
 								<tr>
-									<td title="{transaction.address}">{ formatLargeString(transaction.address) }</td>
+									<td title="{transaction.address}">{ Helpers.formatLargeString(transaction.address) }</td>
 									<td>{ transaction.amount }</td>
 									<td>{ transaction.payment_id }</td>
-									<td>{ formatLargeString(transaction.txid) }</td>
+									<td>{ Helpers.formatLargeString(transaction.txid) }</td>
 									<td>{ transaction.confirmations }</td>
 								</tr>
 							{/each}

@@ -4,7 +4,7 @@
 	import Home from './Home'
 	import Network from './Network'
 	import Transactions from './Transactions'
-	import Payments from './Payments'
+	import Invoices from './Invoices'
 	import Processing from './Processing'
 </script>
 
@@ -26,20 +26,28 @@
 						</span>
 					</li>
 
-					<li class="{ $view === 'transactions' ? 'active' : '' }" on:click={ () => $view = 'transactions' }>
-						<span><i class="bi bi-wallet2"></i> Transactions <small>(in wallet)</small> </span>
+					<li class="{ $view === 'invoices' ? 'active' : '' }" on:click={ () => $view = 'invoices' }>
+						<span>
+							<i class="bi bi-credit-card"></i> Invoices <small>( in database)</small>
+						</span>
 					</li>
 
-					<li class="{ $view === 'payments' ? 'active' : '' }" on:click={ () => $view = 'payments' }>
-						<span><i class="bi bi-credit-card"></i> Payments <small>( in database)</small></span>
+					<li class="{ $view === 'transactions' ? 'active' : '' }" on:click={ () => $view = 'transactions' }>
+						<span>
+							<i class="bi bi-wallet2"></i> Transactions <small>(in wallet)</small>
+						</span>
 					</li>
 
 					<li class="{ $view === 'settings' ? 'active' : '' }" on:click={ () => $view = 'settings' }>
-						<span><i class="bi bi-gear"></i> Account setting </span>
+						<span>
+							<i class="bi bi-gear"></i> Account setting
+						</span>
 					</li>
 
 					<li class="mx-2 { $view === 'processing' ? 'active' : '' }" on:click={ () => $view = 'processing' }>
-						<span><i class="bi bi-arrow-repeat"></i> Processing</span>
+						<span>
+							<i class="bi bi-arrow-repeat"></i> Processing
+						</span>
 					</li>
 				</ul>
 			</nav>
@@ -63,8 +71,8 @@
 			 		<Network />
 			 	{:else if $view === 'transactions'}
 			 		<Transactions />
-			 	{:else if $view === 'payments'}
-			 		<Payments />
+			 	{:else if $view === 'invoices'}
+			 		<Invoices />
 				{:else if $view === 'processing'}
 					<Processing />
 				{/if}
