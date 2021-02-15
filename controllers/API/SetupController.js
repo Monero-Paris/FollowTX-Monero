@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('../../models/User')
+const Meta = require('../../models/Meta')
 const argon2 = require('argon2')
 
 exports.databaseTest = async (request, response) => {
@@ -20,6 +21,11 @@ exports.databaseCreateUser = async (request, response) => {
 	user = await User.create({
 		name,
 		password
+	})
+
+	await Meta.create({
+		key: 'setup_done',
+		value: 1
 	})
 
 	await response.json(user)

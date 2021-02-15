@@ -5,25 +5,10 @@
 
 	let softwares = [
 		'Redis',
-		'Postgres SQL',
+		'Mongodb',
 		'Monero daemon',
-		'Monero wallet',
+		'Monero wallet RPC',
 	]
-
-	async function check(software) {
-		return new Promise((resolve, reject) => {
-
-			const url = '/api/setup'
-
-			axios.post(url, {
-				software
-			}).then(response => resolve(response.data))
-		})
-	}
-
-	//check('git').then(response => console.log(response))
-
-
 
 </script>
 

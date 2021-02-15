@@ -1902,10 +1902,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function get_each_context(ctx, list, i) {
   var child_ctx = ctx.slice();
-  child_ctx[4] = list[i];
-  child_ctx[6] = i;
+  child_ctx[2] = list[i];
+  child_ctx[4] = i;
   return child_ctx;
-} // (51:12) {#each bubbles as bubble, index}
+} // (21:12) {#each bubbles as bubble, index}
 
 
 function create_each_block(ctx) {
@@ -1915,7 +1915,7 @@ function create_each_block(ctx) {
   var span1;
   var t1_value =
   /*bubble*/
-  ctx[4] + "";
+  ctx[2] + "";
   var t1;
   var t2;
   var li_class_value;
@@ -1932,11 +1932,11 @@ function create_each_block(ctx) {
       /*$slide*/
       ctx[0] ===
       /*index*/
-      ctx[6] ? "active" :
+      ctx[4] ? "active" :
       /*$slide*/
       ctx[0] >
       /*index*/
-      ctx[6] ? "completed" : "pending");
+      ctx[4] ? "completed" : "pending");
     },
     m: function m(target, anchor) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, li, anchor);
@@ -1953,11 +1953,11 @@ function create_each_block(ctx) {
       /*$slide*/
       ctx[0] ===
       /*index*/
-      ctx[6] ? "active" :
+      ctx[4] ? "active" :
       /*$slide*/
       ctx[0] >
       /*index*/
-      ctx[6] ? "completed" : "pending")) {
+      ctx[4] ? "completed" : "pending")) {
         (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(li, "class", li_class_value);
       }
     },
@@ -1965,7 +1965,7 @@ function create_each_block(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(li);
     }
   };
-} // (68:31) 
+} // (35:31) 
 
 
 function create_if_block_3(ctx) {
@@ -1993,7 +1993,7 @@ function create_if_block_3(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(completed, detaching);
     }
   };
-} // (66:25) 
+} // (33:25) 
 
 
 function create_if_block_2(ctx) {
@@ -2021,7 +2021,7 @@ function create_if_block_2(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(check_database, detaching);
     }
   };
-} // (64:25) 
+} // (31:25) 
 
 
 function create_if_block_1(ctx) {
@@ -2049,7 +2049,7 @@ function create_if_block_1(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(check_software, detaching);
     }
   };
-} // (62:2) {#if $slide === 0}
+} // (29:2) {#if $slide === 0}
 
 
 function create_if_block(ctx) {
@@ -2083,10 +2083,7 @@ function create_fragment(ctx) {
   var div1;
   var div0;
   var ul;
-  var t0;
-  var b;
-  var t1;
-  var t2;
+  var t;
   var current_block_type_index;
   var if_block;
   var current;
@@ -2132,16 +2129,11 @@ function create_fragment(ctx) {
         each_blocks[_i].c();
       }
 
-      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-      b = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("b");
-      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(
-      /*$slide*/
-      ctx[0]);
-      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      t = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
       if (if_block) if_block.c();
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(ul, "class", "progress-indicator");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "col-md-8 mx-auto");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "container mt-3");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "container mt-5");
     },
     m: function m(target, anchor) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div1, anchor);
@@ -2152,10 +2144,7 @@ function create_fragment(ctx) {
         each_blocks[_i2].m(ul, null);
       }
 
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, b);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(b, t1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t);
 
       if (~current_block_type_index) {
         if_blocks[current_block_type_index].m(div0, null);
@@ -2197,11 +2186,6 @@ function create_fragment(ctx) {
         each_blocks.length = each_value.length;
       }
 
-      if (!current || dirty &
-      /*$slide*/
-      1) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t1,
-      /*$slide*/
-      ctx[0]);
       var previous_block_index = current_block_type_index;
       current_block_type_index = select_block_type(ctx, dirty);
 
@@ -2253,10 +2237,6 @@ function instance($$self, $$props, $$invalidate) {
   var $slide;
   (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.component_subscribe)($$self, _stores__WEBPACK_IMPORTED_MODULE_1__.slide, function ($$value) {
     return $$invalidate(0, $slide = $$value);
-  });
-  var current_slide;
-  var unsubscribe = _stores__WEBPACK_IMPORTED_MODULE_1__.slide.subscribe(function (value) {
-    return current_slide = value;
   });
   var bubbles = ["Intro", "Software", "Database", "Done"];
   return [$slide, bubbles];
@@ -2720,15 +2700,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
-/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_stores */ "./resources/js/setup/_stores.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
+/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../_stores */ "./resources/js/setup/_stores.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2745,10 +2721,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -2769,30 +2741,30 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function get_each_context(ctx, list, i) {
   var child_ctx = ctx.slice();
-  child_ctx[5] = list[i];
+  child_ctx[4] = list[i];
   return child_ctx;
-} // (36:2) {#each softwares as software}
+} // (21:2) {#each softwares as software}
 
 
 function create_each_block(ctx) {
   var div;
   var t_value =
   /*software*/
-  ctx[5] + "";
+  ctx[4] + "";
   var t;
   return {
     c: function c() {
-      div = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      t = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.text)(t_value);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div, "class", "mb-3");
+      div = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      t = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t_value);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "mb-3");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, div, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div, t);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div, t);
     },
-    p: svelte_internal__WEBPACK_IMPORTED_MODULE_1__.noop,
+    p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(div);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div);
     }
   };
 }
@@ -2820,50 +2792,50 @@ function create_fragment(ctx) {
 
   return {
     c: function c() {
-      div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
+      div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
       div0.textContent = "Install on your system";
-      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 
       for (var _i = 0; _i < each_blocks.length; _i += 1) {
         each_blocks[_i].c();
       }
 
-      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
-      button0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("button");
+      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      button0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("button");
       button0.innerHTML = "<i class=\"bi bi-arrow-left-short\"></i> Previous";
-      t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.space)();
-      button1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("button");
+      t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      button1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("button");
       button1.innerHTML = "Next <i class=\"bi bi-arrow-right-short\"></i>";
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div0, "class", "card-header");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(button0, "class", "btn btn-primary");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(button1, "class", "btn btn-primary");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div1, "class", "d-flex justify-content-between mt-3");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div2, "class", "card-body");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div3, "class", "card");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "card-header");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(button0, "class", "btn btn-primary");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(button1, "class", "btn btn-primary");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "d-flex justify-content-between mt-3");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "card-body");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "card");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.insert)(target, div3, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div3, div0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div3, t1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div3, div2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div3, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, t1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div2);
 
       for (var _i2 = 0; _i2 < each_blocks.length; _i2 += 1) {
         each_blocks[_i2].m(div2, null);
       }
 
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, t2);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div2, div1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, button0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, t4);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(div1, button1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, t2);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, div1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, button0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, t4);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, button1);
 
       if (!mounted) {
-        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(button0, "click",
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(button0, "click",
         /*click_handler*/
-        ctx[2]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(button1, "click",
+        ctx[2]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(button1, "click",
         /*click_handler_1*/
         ctx[3])];
         mounted = true;
@@ -2903,59 +2875,30 @@ function create_fragment(ctx) {
         each_blocks.length = each_value.length;
       }
     },
-    i: svelte_internal__WEBPACK_IMPORTED_MODULE_1__.noop,
-    o: svelte_internal__WEBPACK_IMPORTED_MODULE_1__.noop,
+    i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
+    o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(div3);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.destroy_each)(each_blocks, detaching);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_each)(each_blocks, detaching);
       mounted = false;
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.run_all)(dispose);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.run_all)(dispose);
     }
   };
 }
 
 function instance($$self, $$props, $$invalidate) {
   var $slide;
-  (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.component_subscribe)($$self, _stores__WEBPACK_IMPORTED_MODULE_2__.slide, function ($$value) {
+  (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.component_subscribe)($$self, _stores__WEBPACK_IMPORTED_MODULE_1__.slide, function ($$value) {
     return $$invalidate(0, $slide = $$value);
   });
-  var softwares = ["Redis", "Postgres SQL", "Monero daemon", "Monero wallet"];
-
-  function check(_x) {
-    return _check.apply(this, arguments);
-  }
-
-  function _check() {
-    _check = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(software) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              return _context.abrupt("return", new Promise(function (resolve, reject) {
-                var url = "/api/setup";
-                axios__WEBPACK_IMPORTED_MODULE_3___default().post(url, {
-                  software: software
-                }).then(function (response) {
-                  return resolve(response.data);
-                });
-              }));
-
-            case 1:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-    return _check.apply(this, arguments);
-  }
+  var softwares = ["Redis", "Mongodb", "Monero daemon", "Monero wallet RPC"];
 
   var click_handler = function click_handler() {
-    return (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_store_value)(_stores__WEBPACK_IMPORTED_MODULE_2__.slide, $slide--, $slide);
+    return (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_store_value)(_stores__WEBPACK_IMPORTED_MODULE_1__.slide, $slide--, $slide);
   };
 
   var click_handler_1 = function click_handler_1() {
-    return (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_store_value)(_stores__WEBPACK_IMPORTED_MODULE_2__.slide, $slide++, $slide);
+    return (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_store_value)(_stores__WEBPACK_IMPORTED_MODULE_1__.slide, $slide++, $slide);
   };
 
   return [$slide, softwares, click_handler, click_handler_1];
@@ -2972,12 +2915,12 @@ var Check_Software = /*#__PURE__*/function (_SvelteComponent) {
     _classCallCheck(this, Check_Software);
 
     _this = _super.call(this);
-    (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.init)(_assertThisInitialized(_this), options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_1__.safe_not_equal, {});
+    (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.init)(_assertThisInitialized(_this), options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__.safe_not_equal, {});
     return _this;
   }
 
   return Check_Software;
-}(svelte_internal__WEBPACK_IMPORTED_MODULE_1__.SvelteComponent);
+}(svelte_internal__WEBPACK_IMPORTED_MODULE_0__.SvelteComponent);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Check_Software);
 
@@ -5742,7 +5685,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var svelte_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/store */ "./node_modules/svelte/store/index.mjs");
 
-var slide = (0,svelte_store__WEBPACK_IMPORTED_MODULE_0__.writable)(2);
+var slide = (0,svelte_store__WEBPACK_IMPORTED_MODULE_0__.writable)(0);
 
 /***/ }),
 
