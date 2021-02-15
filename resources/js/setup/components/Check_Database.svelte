@@ -56,7 +56,7 @@
 						<div class="input-group-prepend">
 							<div class="input-group-text">Name</div>
 						</div>
-						<input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Name" bind:value="{user.name}">
+						<input type="text" class="form-control" placeholder="Name" bind:value="{user.name}">
 					</div>
 				</div>
 
@@ -65,7 +65,7 @@
 						<div class="input-group-prepend">
 							<div class="input-group-text">Password</div>
 						</div>
-						<input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Password" bind:value="{user.password}">
+						<input type="text" class="form-control" placeholder="Password" bind:value="{user.password}">
 					</div>
 				</div>
 
@@ -74,7 +74,7 @@
 
 			<div class="form-group mb-3">
 				<button class="btn btn-secondary" type="button" on:click={ () => testConnection() }>Test database</button>
-				<button class="btn btn-secondary { ! test_connection ? 'disabled' : '' }" type="button" on:click={ () => createUser() }>Create uer</button>
+				<button class="btn btn-secondary { (! test_connection || user_created) ? 'disabled' : '' }" type="button" on:click={ () => createUser() }>Create uer</button>
 			</div>
 		</form>
 

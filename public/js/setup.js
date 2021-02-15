@@ -2406,14 +2406,12 @@ function create_fragment(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div2, "class", "input-group-prepend");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input0, "type", "text");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input0, "class", "form-control");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input0, "id", "inlineFormInputGroupUsername");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input0, "placeholder", "Name");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div3, "class", "input-group");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div4, "class", "form-group mb-3");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div6, "class", "input-group-prepend");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input1, "type", "text");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input1, "class", "form-control");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input1, "id", "inlineFormInputGroupUsername");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(input1, "placeholder", "Password");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div7, "class", "input-group");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div8, "class", "form-group mb-3");
@@ -2421,7 +2419,9 @@ function create_fragment(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(button0, "type", "button");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(button1, "class", button1_class_value = "btn btn-secondary " + (!
       /*test_connection*/
-      ctx[0] ? "disabled" : ""));
+      ctx[0] ||
+      /*user_created*/
+      ctx[1] ? "disabled" : ""));
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(button1, "type", "button");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div9, "class", "form-group mb-3");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(button2, "class", "btn btn-primary");
@@ -2515,10 +2515,12 @@ function create_fragment(ctx) {
       }
 
       if (dirty &
+      /*test_connection, user_created*/
+      3 && button1_class_value !== (button1_class_value = "btn btn-secondary " + (!
       /*test_connection*/
-      1 && button1_class_value !== (button1_class_value = "btn btn-secondary " + (!
-      /*test_connection*/
-      ctx[0] ? "disabled" : ""))) {
+      ctx[0] ||
+      /*user_created*/
+      ctx[1] ? "disabled" : ""))) {
         (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(button1, "class", button1_class_value);
       }
 
