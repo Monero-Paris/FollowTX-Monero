@@ -6,6 +6,8 @@ const nunjucks = require('nunjucks')
 const bodyParser = require('body-parser')
 const redis = require('redis')
 
+const session = require('express-session')
+const flash = require('express-flash')
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/gateway', {
@@ -47,6 +49,13 @@ require('./sockets/index')(io)
 
 app.use(bodyParser.json())
 app.use(express.static('public'))
+app.use(session({
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: true,
+	cookie: { secure: true }
+}))
+app.use(flash())
 
 const web_router = require('./routes/web')
 const api_router = require('./routes/api')
