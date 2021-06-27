@@ -7,80 +7,70 @@
 	import Invoices from './Invoices'
 	import Processing from './Processing'
 	import Account from './Account'
+
+	const items = [
+		{
+			title: 'Home',
+			view: 'home',
+			icon: 'bi bi-speedometer2'
+		},
+		{
+			title: 'Network',
+			view: 'network',
+			icon: 'bi bi-hdd-network'
+		},
+		{
+			title: 'Invoices',
+			view: 'invoices',
+			icon: 'bi bi-credit-card'
+		},
+		{
+			title: 'Transactions',
+			view: 'transactions',
+			icon: 'bi bi-wallet2'
+		},
+		{
+			title: 'Account',
+			view: 'account',
+			icon: 'bi bi-gear'
+		},
+		{
+			title: 'Processing',
+			view: 'processing',
+			icon: 'bi bi-arrow-repeat'
+		}
+	]
 </script>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-2" id="sidebar">
-			<nav>
-				<ul>
-					
-					<li class="{ $view === 'home' ? 'active' : '' }" on:click={ () => $view = 'home' }>
-						<span>
-							<i class="bi bi-house-door"></i> Home
-						</span>
-					</li>
+<div class="container">
+	<nav class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-gray-900 flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4">
+		
+			<div class="">
+				<img src="/img/logo2.svg" alt="" style="width: 100px;">
+			</div>
+			<ul>
+			{#each items as item, i}
+				<li on:click={ () => $view = item.view } class="flex items-center px-4 py-2 mt-5 text-white transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
+					<i class="{item.icon}"></i>
 
-					<li class="{ $view === 'network' ? 'active' : '' }" on:click={ () => $view = 'network' }>
-						<span>
-							<i class="bi bi-hdd-network"></i> Network
-						</span>
-					</li>
-
-					<li class="{ $view === 'invoices' ? 'active' : '' }" on:click={ () => $view = 'invoices' }>
-						<span>
-							<i class="bi bi-credit-card"></i> Invoices <small>( in database)</small>
-						</span>
-					</li>
-
-					<li class="{ $view === 'transactions' ? 'active' : '' }" on:click={ () => $view = 'transactions' }>
-						<span>
-							<i class="bi bi-wallet2"></i> Transactions <small>(in wallet)</small>
-						</span>
-					</li>
-
-					<li class="{ $view === 'account' ? 'active' : '' }" on:click={ () => $view = 'account' }>
-						<span>
-							<i class="bi bi-gear"></i> Account setting
-						</span>
-					</li>
-
-					<li class="mx-2 { $view === 'processing' ? 'active' : '' }" on:click={ () => $view = 'processing' }>
-						<span>
-							<i class="bi bi-arrow-repeat"></i> Processing
-						</span>
-					</li>
-				</ul>
-			</nav>
-		</div>
-		<div class="col-md">
-			<div class="row">
-			 <header class="">
-			 	<div class="nav_item">
-			 		<i class="bi bi-person-circle"></i>
-			 	</div>
-			 	<div class="nav_item">
-			 		<i class="bi bi-bell"></i>
-			 	</div>
-			 </header>
-			 </div>
-
-			 <main>
-			 	{#if $view === 'home'}
-			 		<Home />
-			 	{:else if $view === 'network'}
-			 		<Network />
-				{:else if $view === 'invoices'}
-					<Invoices />
-			 	{:else if $view === 'transactions'}
-			 		<Transactions />
-				{:else if $view === 'account'}
-					<Account />
-				{:else if $view === 'processing'}
-					<Processing />
-				{/if}
-			 </main>
-		</div>
-	</div>
+					<span class="mx-4 font-medium">{item.title}</span>
+				</li>
+			{/each}
+		</ul>
+	</nav>
+	<main class="relative md:ml-64">
+		{#if $view === 'home'}
+			<Home />
+		{:else if $view === 'network'}
+			<Network />
+		{:else if $view === 'invoices'}
+			<Invoices />
+		{:else if $view === 'transactions'}
+			<Transactions />
+		{:else if $view === 'account'}
+			<Account />
+		{:else if $view === 'processing'}
+			<Processing />
+		{/if}
+	</main>
 </div>
-

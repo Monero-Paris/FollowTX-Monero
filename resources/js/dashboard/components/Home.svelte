@@ -71,74 +71,68 @@
 	}
 	countInvoicesTotal()
 </script>
-<div class="row mt-3 text-center">
-	<div class="col-md">
-		<div class="card">
-			<div class="card-header">
-				Invoices today
-			</div>
-			<div class="card-body">
-				{ some_data.today }
-			</div>
-		</div>
-	</div>
-	<div class="col-md">
-		<div class="card">
-			<div class="card-header">
-				Invoices this week
-			</div>
-			<div class="card-body">
-				{ some_data.week }
-			</div>
-		</div>
-	</div>
-	<div class="col-md">
-		<div class="card">
-			<div class="card-header">
-				Invoices totals
-			</div>
-			<div class="card-body">
-				{ some_data.total }
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row mt-3">
-	<div class="col-md">
-		<div class="card">
-			<div class="card-header">
-				Latest transactions
-			</div>
-			<div class="card-body">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Status</th>
-							<th>Amount</th>
-							<th>Payment_id</th>
-							<th>Created at</th>
-							<th>Updated at</th>
-						</tr>
-					</thead>
-					<tbody>
-						{#each invoices as invoice}
-							<tr>
-								<td>{ invoice._id }</td>
-								<td><i class="bi bi-circle-fill text-{ colors[invoice.status] }"></i> { invoice.status }</td>
-								<td>{ invoice.amount }</td>
-								<td> {invoice.payment_id} </td>
-								<td>{ Helpers.formatTime(invoice.created_at) }</td>
-								<td>{ Helpers.formatTime(invoice.updated_at) }</td>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
 
-				<div>
-					<button class="btn btn-primary" on:click={ () => $view = 'transactions' }>View more invoices</button>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap -m-4 text-center">
+        <div class="p-4 xl:w-1/3 md:w-1/2 w-full border-2">
+            <div>
+                Invoices today
+            </div>
+            <div>
+                {some_data.today}
+            </div>
+        </div>
+        <div class="p-4 xl:w-1/3 md:w-1/2 w-full border-2">
+            <div>
+                Invoices week
+            </div>
+            <div>
+                {some_data.week}
+            </div>
+        </div>
+        <div class="p-4 xl:w-1/3 md:w-1/2 w-full border-2">
+            <div>
+                Invoices total
+            </div>
+            <div>
+                {some_data.total}
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Latest transactions
+        </div>
+        <div class="card-body">
+            <table class="shadow-lg bg-white">
+                <thead>
+                    <tr>
+                        <th class="bg-blue-100 border text-left px-8 py-4">ID</th>
+                        <th class="bg-blue-100 border text-left px-8 py-4">Status</th>
+                        <th class="bg-blue-100 border text-left px-8 py-4">Amount</th>
+                        <th class="bg-blue-100 border text-left px-8 py-4">Payment_id</th>
+                        <th class="bg-blue-100 border text-left px-8 py-4">Created at</th>
+                        <th class="bg-blue-100 border text-left px-8 py-4">Updated at</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {#each invoices as invoice}
+                        <tr>
+                            <td class="border px-8 py-4">{ invoice._id }</td>
+                            <td class="border px-8 py-4"><i class="bi bi-circle-fill text-{ colors[invoice.status] }"></i> { invoice.status }</td>
+                            <td class="border px-8 py-4">{ invoice.amount }</td>
+                            <td class="border px-8 py-4"> {invoice.payment_id} </td>
+                            <td class="border px-8 py-4">{ Helpers.formatTime(invoice.created_at) }</td>
+                            <td class="border px-8 py-4">{ Helpers.formatTime(invoice.updated_at) }</td>
+                        </tr>
+                    {/each}
+                </tbody>
+            </table>
+
+            <div>
+                <button class="btn btn-primary" on:click={ () => $view = 'transactions' }>View more invoices</button>
+            </div>
+        </div>
+    </div>
 </div>
