@@ -1,8 +1,4 @@
 {
     "/public/js/gateway.js": "/public/js/gateway.js",
-    "/public/js/setup.js": "/public/js/setup.js",
-    "/public/js/dashboard.js": "/public/js/dashboard.js",
-    "/public/css/dashboard.css": "/public/css/dashboard.css",
-    "/public/css/setup.css": "/public/css/setup.css",
     "/public/css/gateway.css": "/public/css/gateway.css"
 }

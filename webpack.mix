@@ -11,16 +11,3 @@ mix
         dev: true
     })
 
-// setup
-mix
-	.js('resources/js/setup/setup.js', 'public/js/setup.js')
-	.sass('resources/sass/setup.scss', 'public/css')
-	.svelte({
-        dev: true
-    })
-mix
-	.js('resources/js/dashboard/app.js', 'public/js/dashboard.js')
-	.sass('resources/sass/dashboard.scss', 'public/css')
-	.svelte({
-        dev: true
-    })
