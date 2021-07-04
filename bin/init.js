@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const process  = require('process')
 
 const dotenv = require('dotenv')
-const dotenvConversion = require('dotenv-conversion')
 
 require('dotenv').config()
 
@@ -52,7 +51,6 @@ const connectDB = async () => {
 connectDB();
 
 // CREATE KEYS
-const fs = require('fs')
 const { generateKeyPair, createSign, createVerify } = require("crypto");
 //generate the key pair
 generateKeyPair(
