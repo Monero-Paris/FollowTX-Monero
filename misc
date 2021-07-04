@@ -1,1 +1,3 @@
 --rpc-bind-ip=127.0.0.1 --rpc-bind-port=18089 --disable-rpc-login --log-level=0 --wallet-file=sn2 --prompt-for-password --stagenet
+
+https://github.com/bradtraversy/node_jwt_example/blob/master/app.js
