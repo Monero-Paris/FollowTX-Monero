@@ -1,17 +1,9 @@
+require('dotenv').config()
 const axios = require('axios')
 //const crypto = require('crypto')
+const Converter = require('../../helpers/Converter')
 const Invoice = require('../../models/Invoice')
-
-
-const Converter = {
-	xmrToAtomicUnits(number) {
-		return number * 1_000_000_000_000
-	},
-
-	atomicUnitsToXmr(number) {
-		return (number / 1_000_000_000_000).toFixed(12)
-	}
-}
+const ObjectId = require('mongoose').Types.ObjectId
 
 exports.index = async (request, response) => {
 
@@ -28,8 +20,7 @@ exports.store = async (request,response) => {
 	let data
 	let result
 
-	// TODO SET VAR
-	res = await axios.post('http://localhost:38083/json_rpc', {
+	res = await axios.post(process.env.DAEMON_RPC, {
 		"jsonrpc":"2.0",
 		"id":"0",
 		"method":"make_integrated_address"
@@ -38,20 +29,20 @@ exports.store = async (request,response) => {
 	})
 
 	data = res.data
-	return response.json(data)
 	result = data.result
 
 	const integrated_address = result.integrated_address
 	const payment_id = result.payment_id
 
 	let amount = request.body.amount
+
 	amount = Converter.xmrToAtomicUnits(amount)
 
 	const tx_description = request.body.tx_description ?? ''
 
 	console.log(amount)
 
-	res = await axios.post('http://localhost:18089/json_rpc', {
+	res = await axios.post(process.env.DAEMON_RPC, {
 		"jsonrpc":"2.0", 
 		"id":"0", 
 		"method":"make_uri",
@@ -65,7 +56,6 @@ exports.store = async (request,response) => {
 
 	data = await res.data
 	result = await data.result
-
 	const uri = await result.uri
 	
 	const doc = {
@@ -78,25 +68,42 @@ exports.store = async (request,response) => {
 
 	const invoice = await Invoice.create(doc)
 
-	await response.json(invoice)
+	return  response.status(201).json(invoice)
 }
 
 exports.show = async (request,response) => {
 
-	const id = request.body.id
-	const invoice = await Payment.findById(id)
+	let id = request.params.id
 
-	await response.json(invoice)
+	id = ObjectId(id)
+
+	const invoice = await Invoice.findById(id)
+
+	return response.json(invoice)
 }
 
 exports.update = async (request,response) => {
 
-	const id = request.body.id
-	const invoice = await Invoice.findById(id)
+	let id = request.params.id
+
+	id = ObjectId(id)
+
+	let status = request.body.status
+
+	const invoice = await Invoice.findByIdAndUpdate(id, {
+		status
+	})
+
+	return response.status(200).json(invoice)
 }
 
 exports.destroy = async (request,response) => {
-	
-	const id = request.body.id
-	const invoice = await Invoice.findById(id)
+
+	let id = request.params.id
+
+	id = ObjectId(id)
+
+	await Invoice.findByIdAndDelete(id)
+
+	return response.status(200).json('invoice deleted')
 }
