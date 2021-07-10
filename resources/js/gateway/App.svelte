@@ -1,22 +1,22 @@
-<script>	
+<script>
 	import ioClient from 'socket.io-client'
 	import QrCode from 'svelte-qrcode'
 	import CopyToClipboard from "svelte-copy-to-clipboard";
 	import swal from 'sweetalert'
 
-	let payment = window.payment
+	let invoice = window.invoice
 	//payment.status = 'completed'
-	
+
 	// socket io
 	let io = ioClient(`/gateway`, {
 		query: {
 			page: 'gateway',
-			payment_id: payment._id
+			invoice: invoice._id
 		}
 	})
 
 	io.on('pop', (message) => {
-		payment.status = 'completed'
+		invoice.status = 'completed'
 		swal('Payment received', 'thanks you', 'success')
 	})
 
@@ -30,21 +30,22 @@
 
 	const Converter = {
 		xmrToAtomicUnits(number) {
-			return number * 1_000_000_000_000 
+			return number * 1_000_000_000_000
 		},
 
 		atomicUnitsToXmr(number) {
 			return (number / 1_000_000_000_000).toFixed(12)
 		}
 	}
+
+	console.info('invoice id:', invoice._id)
+	console.info('payment id:', invoice.payment_id)
 </script>
 
 <div class="gateway-container">
 
 	<div class="gateway-header">
-		<div class="title">
-			Order id: { payment._id }
-		</div>
+		<img src="/img/logo2.svg" alt="logo">
 	</div>
 
 	<div class="gateway-body">
@@ -55,8 +56,8 @@
 					Amount:
 				</div>
 
-				<CopyToClipboard text="{Converter.atomicUnitsToXmr(payment.amount)}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-				      <button class="value" on:click={copy}>{Converter.atomicUnitsToXmr(payment.amount)} XMR</button>
+				<CopyToClipboard text="{Converter.atomicUnitsToXmr(invoice.amount)}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
+				      <button class="value" on:click={copy}>{Converter.atomicUnitsToXmr(invoice.amount)} XMR</button>
 				</CopyToClipboard>
 			</div>
 
@@ -65,18 +66,8 @@
 					Address:
 				</div>
 
-				<CopyToClipboard text="{payment.address}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-				      <button class="value" on:click={copy}>{payment.address}</button>
-				</CopyToClipboard>
-			</div>
-
-			<div class="kv">
-				<div class="key">
-					Payment id:
-				</div>
-
-				<CopyToClipboard text="{payment.payment_id}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-				      <button class="value" on:click={copy}>{payment.payment_id}</button>
+				<CopyToClipboard text="{invoice.address}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
+				      <button class="value" on:click={copy}>{invoice.address}</button>
 				</CopyToClipboard>
 			</div>
 
@@ -85,23 +76,21 @@
 					Uri:
 				</div>
 
-				<CopyToClipboard text="{payment.uri}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-				      <button class="value" on:click={copy}>{payment.uri}</button>
+				<CopyToClipboard text="{invoice.uri}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
+				      <button class="value" on:click={copy}>{invoice.uri}</button>
 				</CopyToClipboard>
 			</div>
 		</div>
 
 		<div class="qrcode-container">
-			<QrCode value="{payment.uri}" padding="0" size="300" background="#ffffff" />
-		</div>	
-	</div>
-
-	<div class="gateway-footer {payment.status === 'completed' ? 'success' : ''}">
-		{#if payment.status === 'completed'}
-			<div>
-				<span>Payment completed</span>
-				<span><a href="/yourwebsite">Go back to website</a></span>
-			</div>
-		{/if}
+			<QrCode value="{invoice.uri}" padding="0" size="300" background="#ffffff" />
+		</div>
 	</div>
 </div>
+
+{#if invoice.status === 'completed'}
+	<div>
+		<span>Payment completed</span>
+		<span><a href="/yourwebsite">Go back to website</a></span>
+	</div>
+{/if}

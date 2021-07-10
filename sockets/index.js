@@ -25,8 +25,6 @@ module.exports = async (io) => {
 		if (status === 'initialised' || status === 'pending' || status === 'cancelled') {
 			invoice.status = 'pending'
 			invoice.save()
-
-			dashboard_namespace.emit('update_payment', payment_id, 'pending')
 		}
 
 
@@ -41,18 +39,7 @@ module.exports = async (io) => {
 				invoice.status = 'cancelled'
 				invoice.save()
 
-				dashboard_namespace.emit('update_payment', payment_id, 'cancelled')
 			}
-		})
-	})
-
-	// dashboard
-	const dashboard_namespace = io.of('/dashboard')
-
-	dashboard_namespace.on('connection', socket => {
-
-		socket.on('refresh-processing-client-ask-server', () => {
-			socket.emit('refresh-processing-server-answer-client', map_socket_payment)
 		})
 	})
 

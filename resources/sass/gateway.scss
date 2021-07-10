@@ -1,10 +1,16 @@
+$green: #239a63;
+
+body {
+	background: #f6f6f6;
+}
+
 .gateway-container {
 	font-family: "Open Sans";
 	margin: 1rem auto 0 auto;
-	border-radius: 10px;
-	box-shadow: 0px 0px 5px 0px rgba(66,66,66,0.9);
+	border-radius: 2px;
+	border:1px solid rgba(33,33,33,0.3);
 
-	background: #f6f6f6;
+	background: #fff;
 	color: #39414b;
 	
 	display: flex;
@@ -13,14 +19,8 @@
 	width: 96%;
 
 	.gateway-header {
-		padding: .4rem;
-		background: #727c89;
-		color: #fff;
-		text-align: center;
-
-		.title {
-			font-size: 1.4rem;
-			
+		img	{
+			width: 80px;
 		}
 	}
 
@@ -49,7 +49,7 @@
 					text-align: left;
 					padding: 0;
 					max-width: 100%;
-					font-size: 1.2rem;
+					font-size: 1rem;
 
 				}
 			}
@@ -62,27 +62,6 @@
 				border: 1px solid rgba(#000, 0.3);
 				background: #fff;
 			}
-		}
-	}
-
-	.gateway-footer {
-
-
-		background: #242424;
-		color: #fff;
-		padding: 1rem;
-
-		a {
-			color: #fff;
-			margin-left: 1rem;
-		}
-
-		&.success {
-			background: #239a63;
-		}
-
-		&.error {
-			background: red;
 		}
 	}
 }

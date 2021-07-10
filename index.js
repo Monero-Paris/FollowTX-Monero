@@ -6,10 +6,9 @@ const nunjucks = require('nunjucks')
 const bodyParser = require('body-parser')
 const redis = require('redis')
 
-const session = require('express-session')
-const flash = require('express-flash')
+const PORT = 8080
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/gateway', {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true, 
@@ -22,8 +21,6 @@ redis_client.on('error', (error) => console.log(error))
 
 //const monerojs = require("monero-javascript")
 
-const PORT = 8080
-
 nunjucks.configure('views', {
 	autoescape:  true,
 	express:  app,
@@ -31,7 +28,6 @@ nunjucks.configure('views', {
 }) 
 
 const subscriber = redis.createClient()
-//const publisher = redis.createClient()
 
 subscriber.subscribe('tx')
 const SubscriberHandler = require('./subscribe/index')
@@ -49,13 +45,6 @@ require('./sockets/index')(io)
 
 app.use(bodyParser.json())
 app.use(express.static('public'))
-app.use(session({
-	secret: 'keyboard cat',
-	resave: false,
-	saveUninitialized: true,
-	cookie: { secure: true }
-}))
-app.use(flash())
 
 const web_router = require('./routes/web')
 const api_router = require('./routes/api')
@@ -63,6 +52,4 @@ const api_router = require('./routes/api')
 app.use('/', web_router)
 app.use('/api', api_router)
 
-http.listen(PORT, () => {
-	console.log('listening on *:' + PORT)
-})
+http.listen(PORT, () => console.log('listening on localhost:' + PORT))
