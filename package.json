@@ -10,7 +10,8 @@
     "hot": "mix watch --hot",
     "production": "mix --production",
     "migrate": "node migrations/index.js",
-    "init": "node bin/init.js"
+    "init": "node bin/init.js",
+    "handle": "node bin/handle"
   },
   "author": "",
   "license": "ISC",
