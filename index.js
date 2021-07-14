@@ -4,7 +4,6 @@ const http = require('http').Server(app)
 const io = require('socket.io')(http)
 const nunjucks = require('nunjucks')
 const bodyParser = require('body-parser')
-const redis = require('redis')
 
 const PORT = 8080
 
@@ -15,10 +14,6 @@ mongoose.connect('mongodb://localhost/gateway', {
 	useFindAndModify: false
 }).then(() => console.log('mongodb connected successfully'))
 
-
-const redis_client = redis.createClient()
-redis_client.on('error', (error) => console.log(error))
-
 //const monerojs = require("monero-javascript")
 
 nunjucks.configure('views', {
@@ -26,19 +21,6 @@ nunjucks.configure('views', {
 	express:  app,
 	watch: true,
 }) 
-
-const subscriber = redis.createClient()
-
-subscriber.subscribe('tx')
-const SubscriberHandler = require('./subscribe/index')
-subscriber.on('message',(channel, message) => {
-	
-    console.log('new payment here')
-
-    console.log(channel, message)
-
-	SubscriberHandler.tx(message, io)
-})
 
 // sockets
 require('./sockets/index')(io)
