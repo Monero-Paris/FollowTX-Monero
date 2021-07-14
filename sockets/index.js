@@ -1,8 +1,4 @@
-const axios = require('axios')
-
 const Invoice = require('../models/Invoice')
-
-let map_socket_payment = new Map()
 
 module.exports = async (io) => {
 
@@ -12,9 +8,9 @@ module.exports = async (io) => {
 	gateway_namespace.on('connection', async (socket) => {
 		console.log('welcome in gateway')
 
-		const payment_id = socket.handshake.query.payment_id
+		const invoice_id = socket.handshake.query.id
 
-		const invoice = await Invoice.findById(payment_id)
+		const invoice = await Invoice.findById(invoice_id)
 
 		if (! invoice) {
 			return
@@ -27,12 +23,7 @@ module.exports = async (io) => {
 			invoice.save()
 		}
 
-
-		map_socket_payment.set(socket.id, payment_id)
-
 		socket.on('disconnect', async () => {
-			
-			map_socket_payment.delete(socket.id)
 
 			if (status === 'initialised' || status === 'pending' || status === 'cancelled') {
 
