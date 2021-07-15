@@ -11,7 +11,7 @@
     "production": "mix --production",
     "migrate": "node migrations/index.js",
     "init": "node bin/init.js",
-    "handle": "node bin/handle"
+    "handle": "redis-cli --raw PUBLISH tx"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +28,7 @@
     "mongoose": "^5.13.2",
     "nunjucks": "^3.2.3",
     "process": "^0.11.10",
+    "redis": "^3.1.2",
     "socket.io": "^3.0.5",
     "socket.io-client": "^3.1.0",
     "svelte-copy-to-clipboard": "^0.2.5",

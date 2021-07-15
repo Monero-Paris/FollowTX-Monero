@@ -4,6 +4,10 @@ const http = require('http').Server(app)
 const io = require('socket.io')(http)
 const nunjucks = require('nunjucks')
 const bodyParser = require('body-parser')
+const redis = require('redis')
+
+//const {method, otherMethod} = require('./bootsrap/bootstrap');
+//console.log(method)
 
 const PORT = 8080
 
@@ -12,7 +16,28 @@ mongoose.connect('mongodb://localhost/gateway', {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true, 
 	useFindAndModify: false
-}).then(() => console.log('mongodb connected successfully'))
+})
+	.then(() => console.log('mongodb connected successfully'))
+	.catch(() => console.log('mongodb not connected'))
+
+const redis_client = redis.createClient()
+redis_client.on('error', (error) => console.log(error))
+const subscriber = redis.createClient()
+subscriber.subscribe('tx')
+subscriber.on('message', (channel, message) => {
+
+	if ( channel !== 'tx') {
+		return
+	}
+
+	console.log('new payment here')
+
+	console.log(channel, message)
+
+	require('./bin/handle').handle(message, io)
+
+})
+
 
 //const monerojs = require("monero-javascript")
 
@@ -35,3 +60,5 @@ app.use('/', web_router)
 app.use('/api', api_router)
 
 http.listen(PORT, () => console.log('listening on localhost:' + PORT))
+
+exports.http = http
