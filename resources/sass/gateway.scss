@@ -2,21 +2,19 @@ $green: #239a63;
 
 body {
 	background: #f6f6f6;
+	font-family: "Open Sans";
 }
 
 .gateway-container {
-	font-family: "Open Sans";
 	margin: 1rem auto 0 auto;
 	border-radius: 2px;
-	border:1px solid rgba(33,33,33,0.3);
+	border:1px solid rgba(33,33,33,0.2);
 
 	background: #fff;
 	color: #39414b;
 	
 	display: flex;
 	flex-direction: column;
-
-	width: 96%;
 
 	.gateway-header {
 		img	{
@@ -36,10 +34,13 @@ body {
 
 			.kv {
 				margin-top: 1rem;
+				border: 1px solid rgba(#000, 0.1);
+				padding: .4rem;
+				cursor: pointer;
 
 				.key {
 					font-weight: bold;
-					font-size: 1.1rem;
+					font-size: 1rem;
 				}
 
 				.value {
@@ -49,7 +50,7 @@ body {
 					text-align: left;
 					padding: 0;
 					max-width: 100%;
-					font-size: 1rem;
+					font-size: 0.9rem;
 
 				}
 			}
@@ -63,5 +64,15 @@ body {
 				background: #fff;
 			}
 		}
+	}
+}
+
+.logo-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img {
+		width: 80px;
 	}
 }
