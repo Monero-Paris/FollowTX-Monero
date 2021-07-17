@@ -2,12 +2,14 @@ let mix = require('laravel-mix')
 
 require('laravel-mix-svelte')
 
-// gateway
 mix
 	.js('resources/js/gateway/app.js', 'public/js/gateway.js')
-  	.sass('resources/sass/gateway.scss', 'public/css')
-    
-    .svelte({
+	.svelte({
         dev: true
     })
+    .postCss("resources/sass/app.css", "public/css", [
+        require("tailwindcss"),
+    ])
+
+
 

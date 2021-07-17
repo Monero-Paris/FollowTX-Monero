@@ -43,47 +43,52 @@
 	console.info('payment id:', invoice.payment_id)
 </script>
 
-<div class="gateway-container">
-	<div class="gateway-body">
-		<div class="data">
-
-			<CopyToClipboard text="{Converter.atomicUnitsToXmr(invoice.amount)}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-				<div class="kv" on:click={copy}>
-					<div class="key">
-						Amount:
-					</div>
-					<div class="value">
-						{Converter.atomicUnitsToXmr(invoice.amount)} XMR
-					</div>
-				</div>
-			</CopyToClipboard>
-
-			<CopyToClipboard text="{invoice.address}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-				<div class="kv" on:click={copy}>
-					<div class="key">
-						Address:
-					</div>
-					<div class="value">
-						{invoice.address}
-					</div>
-				</div>
-			</CopyToClipboard>
-		</div>
-
-		<div class="qrcode-container">
-			<QrCode value="{invoice.uri}" padding="0" size="300" background="#ffffff" />
-		</div>
-	</div>
-</div>
-
 {#if invoice.status === 'completed'}
-	<div>
+	<div class="bg-green-300 text-center p-6">
 		<span>Payment completed</span>
 		<span><a href="/yourwebsite">Go back to website</a></span>
 	</div>
 {/if}
 
-<div class="logo-container">
-	<img src="/img/logo2.svg" alt="logo" class="logo">
+<div class="text-xl text-center my-3">
+	Payment checkout
 </div>
 
+	<CopyToClipboard text="{Converter.atomicUnitsToXmr(invoice.amount)}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
+		<div class="m-6 bg-white shadow-md cursor-pointer">
+			<div class="kv my-4" on:click={copy}>
+				<div class="p-3">
+					Amount:
+				</div>
+				<div class="p-3">
+					{Converter.atomicUnitsToXmr(invoice.amount)} XMR
+				</div>
+			</div>
+		</div>
+	</CopyToClipboard>
+
+	<CopyToClipboard text="{invoice.address}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
+		<div class="m-6 bg-white shadow-md cursor-pointer">
+				<div class="kv" on:click={copy}>
+					<div class="p-3">
+						Address:
+					</div>
+					<div class="p-3 break-words">
+						{invoice.address}
+					</div>
+				</div>
+		</div>
+	</CopyToClipboard>
+
+<div class="flex justify-center">
+	<QrCode value="{invoice.uri}" padding="10" size="300" background="#ffffff" />
+</div>
+
+
+<div class="flex justify-center my-3">
+	<img src="/img/Monero-Logo.svg" alt="logo" class="logo">
+</div>
+
+<div class="flex justify-center my-3">
+	<img src="/img/logo2.svg" alt="logo" class="logo" style="width: 90px;">
+</div>
