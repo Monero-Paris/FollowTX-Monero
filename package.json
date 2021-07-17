@@ -10,7 +10,8 @@
     "hot": "mix watch --hot",
     "production": "mix --production",
     "migrate": "node migrations/index.js",
-    "init": "node bin/init.js",
+    "check": "node bin/check",
+    "keys": "node bin/keys",
     "handle": "redis-cli --raw PUBLISH tx"
   },
   "author": "",
