@@ -1,54 +1,4 @@
-const colors = require('colors')
 const fs = require('fs')
-const mongoose = require('mongoose');
-const process  = require('process')
-
-const dotenv = require('dotenv')
-
-require('dotenv').config()
-
-
-colors.enable()
-
-console.log('Hello and welcome to MetaPay'.green)
-
-// check if .env exists
-try {
-    fs.statSync('.env')
-} catch (e) {
-    console.log('.env not found'.red)
-    console.log('cp .env.example .env'.blue)
-    process.exit(0)
-}
-
-// test connexion
-const database = process.env.DB_DATABASE
-const port = process.env.DB_PORT
-const user = process.env.DB_USER
-const password = process.env.DB_PASSWORD
-
-const connectDB = async () => {
-    try {
-        const database = process.env.DB_DATABASE
-        const port = process.env.DB_PORT
-        const user = process.env.DB_USER
-        const password = process.env.DB_PASSWORD
-
-        await mongoose.connect(`mongodb://localhost:${port}/${database}`, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false,
-            useCreateIndex: true
-        });
-
-        console.log('MongoDB connected!!'.green);
-        mongoose.disconnect()
-
-    } catch (err) {
-        console.log('Failed to connect to MongoDB', err);
-    }
-};
-connectDB();
 
 // CREATE KEYS
 const { generateKeyPair, createSign, createVerify } = require("crypto");
@@ -99,7 +49,7 @@ generateKeyPair(
                 padding: require("crypto").constants.RSA_PKCS1_PSS_PADDING,
             });
         //Convert the signature to base64 for storage.
-       // console.log(signature.toString("base64"));
+        // console.log(signature.toString("base64"));
 
         // To verify the data, we provide the same hashing algorithm and
         // padding scheme we provided to generate the signature, along
@@ -116,7 +66,6 @@ generateKeyPair(
         );
 
         // isVerified should be `true` if the signature is valid
-       // console.log("signature verified: ", isVerified);
+        // console.log("signature verified: ", isVerified);
     }
 );
-
