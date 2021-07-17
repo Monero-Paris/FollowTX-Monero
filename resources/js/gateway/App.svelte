@@ -21,7 +21,8 @@
 	})
 
 	const handleSuccessfullyCopied = (e) => {
-		alert(`successfully copied to clipboard! ${e}`);
+		alert(`successfully copied to clipboard! ${e}`)
+		console.log(e)
 	}
 
 	const handleFailedCopy = () => {
@@ -43,12 +44,6 @@
 </script>
 
 <div class="gateway-container">
-
-	<div class="gateway-header">
-		<!--
-		<img src="/img/logo2.svg" alt="logo" class="logo">
-		 -->
-	</div>
 	<div class="gateway-body">
 		<div class="data">
 
@@ -71,17 +66,6 @@
 					<div class="value">
 						{invoice.address}
 					</div>
-				</div>
-			</CopyToClipboard>
-
-			<CopyToClipboard text="{invoice.uri}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-				<div class="kv" on:click={copy}>
-					<div class="key">
-						Uri:
-					</div>
-				  <div class="value">
-					  {invoice.uri}
-				  </div>
 				</div>
 			</CopyToClipboard>
 		</div>

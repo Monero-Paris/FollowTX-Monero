@@ -16,20 +16,14 @@ body {
 	display: flex;
 	flex-direction: column;
 
-	.gateway-header {
-		img	{
-			width: 80px;
-		}
-	}
 
 	.gateway-body {
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
 		padding: 1rem;
 
 		
-		.data {		
-			width: 60%;
+		.data {
 			word-wrap: break-word;
 
 			.kv {
@@ -57,6 +51,7 @@ body {
 		}
 
 		.qrcode-container {
+			margin-top: 1rem;
 
 			img {
 				padding: 10px;

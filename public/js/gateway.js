@@ -363,7 +363,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function create_default_slot_2(ctx) {
+function create_default_slot_1(ctx) {
   var div2;
   var div0;
   var t1;
@@ -425,10 +425,10 @@ function create_default_slot_2(ctx) {
       dispose();
     }
   };
-} // (66:3) <CopyToClipboard text="{invoice.address}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
+} // (61:3) <CopyToClipboard text="{invoice.address}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
 
 
-function create_default_slot_1(ctx) {
+function create_default_slot(ctx) {
   var div2;
   var div0;
   var t1;
@@ -483,65 +483,7 @@ function create_default_slot_1(ctx) {
       dispose();
     }
   };
-} // (77:3) <CopyToClipboard text="{invoice.uri}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-
-
-function create_default_slot(ctx) {
-  var div2;
-  var div0;
-  var t1;
-  var div1;
-  var t2_value =
-  /*invoice*/
-  ctx[0].uri + "";
-  var t2;
-  var mounted;
-  var dispose;
-  return {
-    c: function c() {
-      div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-      div0.textContent = "Uri:";
-      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t2_value);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "key");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "value");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "kv");
-    },
-    m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div2, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, div0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, t1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, div1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, t2);
-
-      if (!mounted) {
-        dispose = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(div2, "click", function () {
-          if ((0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.is_function)(
-          /*copy*/
-          ctx[5]))
-            /*copy*/
-            ctx[5].apply(this, arguments);
-        });
-        mounted = true;
-      }
-    },
-    p: function p(new_ctx, dirty) {
-      ctx = new_ctx;
-      if (dirty &
-      /*invoice*/
-      1 && t2_value !== (t2_value =
-      /*invoice*/
-      ctx[0].uri + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2, t2_value);
-    },
-    d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div2);
-      mounted = false;
-      dispose();
-    }
-  };
-} // (95:0) {#if invoice.status === 'completed'}
+} // (79:0) {#if invoice.status === 'completed'}
 
 
 function create_if_block(ctx) {
@@ -561,22 +503,18 @@ function create_if_block(ctx) {
 }
 
 function create_fragment(ctx) {
-  var div4;
-  var div0;
-  var t0;
   var div3;
-  var div1;
-  var copytoclipboard0;
-  var t1;
-  var copytoclipboard1;
-  var t2;
-  var copytoclipboard2;
-  var t3;
   var div2;
+  var div0;
+  var copytoclipboard0;
+  var t0;
+  var copytoclipboard1;
+  var t1;
+  var div1;
   var qrcode;
-  var t4;
-  var t5;
-  var div5;
+  var t2;
+  var t3;
+  var div4;
   var current;
   copytoclipboard0 = new svelte_copy_to_clipboard__WEBPACK_IMPORTED_MODULE_3__.default({
     props: {
@@ -586,7 +524,7 @@ function create_fragment(ctx) {
       /*invoice*/
       ctx[0].amount),
       $$slots: {
-        "default": [create_default_slot_2, function (_ref) {
+        "default": [create_default_slot_1, function (_ref) {
           var copy = _ref.copy;
           return {
             5: copy
@@ -613,7 +551,7 @@ function create_fragment(ctx) {
       /*invoice*/
       ctx[0].address,
       $$slots: {
-        "default": [create_default_slot_1, function (_ref3) {
+        "default": [create_default_slot, function (_ref3) {
           var copy = _ref3.copy;
           return {
             5: copy
@@ -634,33 +572,6 @@ function create_fragment(ctx) {
   copytoclipboard1.$on("fail",
   /*handleFailedCopy*/
   ctx[2]);
-  copytoclipboard2 = new svelte_copy_to_clipboard__WEBPACK_IMPORTED_MODULE_3__.default({
-    props: {
-      text:
-      /*invoice*/
-      ctx[0].uri,
-      $$slots: {
-        "default": [create_default_slot, function (_ref5) {
-          var copy = _ref5.copy;
-          return {
-            5: copy
-          };
-        }, function (_ref6) {
-          var copy = _ref6.copy;
-          return copy ? 32 : 0;
-        }]
-      },
-      $$scope: {
-        ctx: ctx
-      }
-    }
-  });
-  copytoclipboard2.$on("copy",
-  /*handleSuccessfullyCopied*/
-  ctx[1]);
-  copytoclipboard2.$on("fail",
-  /*handleFailedCopy*/
-  ctx[2]);
   qrcode = new svelte_qrcode__WEBPACK_IMPORTED_MODULE_2__.default({
     props: {
       value:
@@ -676,54 +587,45 @@ function create_fragment(ctx) {
   ctx[0].status === "completed" && create_if_block(ctx);
   return {
     c: function c() {
-      div4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
       div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(copytoclipboard0.$$.fragment);
-      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(copytoclipboard1.$$.fragment);
-      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(copytoclipboard2.$$.fragment);
-      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
       div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(copytoclipboard0.$$.fragment);
+      t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(copytoclipboard1.$$.fragment);
+      t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(qrcode.$$.fragment);
-      t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
       if (if_block) if_block.c();
-      t5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-      div5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-      div5.innerHTML = "<img src=\"/img/logo2.svg\" alt=\"logo\" class=\"logo\"/>";
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "gateway-header");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "data");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "qrcode-container");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "gateway-body");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div4, "class", "gateway-container");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div5, "class", "logo-container");
+      t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+      div4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div4.innerHTML = "<img src=\"/img/logo2.svg\" alt=\"logo\" class=\"logo\"/>";
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "data");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "qrcode-container");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "gateway-body");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "gateway-container");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div4, "class", "logo-container");
     },
     m: function m(target, anchor) {
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div4, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div4, div0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div4, t0);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div4, div3);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(copytoclipboard0, div1, null);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, t1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(copytoclipboard1, div1, null);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, t2);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(copytoclipboard2, div1, null);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, t3);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div3, anchor);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div2);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(qrcode, div2, null);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t4, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, div0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(copytoclipboard0, div0, null);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t0);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(copytoclipboard1, div0, null);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, t1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, div1);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(qrcode, div1, null);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t2, anchor);
       if (if_block) if_block.m(target, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t5, anchor);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div5, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, t3, anchor);
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div4, anchor);
       current = true;
     },
-    p: function p(ctx, _ref7) {
-      var _ref8 = _slicedToArray(_ref7, 1),
-          dirty = _ref8[0];
+    p: function p(ctx, _ref5) {
+      var _ref6 = _slicedToArray(_ref5, 1),
+          dirty = _ref6[0];
 
       var copytoclipboard0_changes = {};
       if (dirty &
@@ -761,23 +663,6 @@ function create_fragment(ctx) {
       }
 
       copytoclipboard1.$set(copytoclipboard1_changes);
-      var copytoclipboard2_changes = {};
-      if (dirty &
-      /*invoice*/
-      1) copytoclipboard2_changes.text =
-      /*invoice*/
-      ctx[0].uri;
-
-      if (dirty &
-      /*$$scope, copy, invoice*/
-      97) {
-        copytoclipboard2_changes.$$scope = {
-          dirty: dirty,
-          ctx: ctx
-        };
-      }
-
-      copytoclipboard2.$set(copytoclipboard2_changes);
       var qrcode_changes = {};
       if (dirty &
       /*invoice*/
@@ -792,7 +677,7 @@ function create_fragment(ctx) {
         if (if_block) {} else {
           if_block = create_if_block(ctx);
           if_block.c();
-          if_block.m(t5.parentNode, t5);
+          if_block.m(t3.parentNode, t3);
         }
       } else if (if_block) {
         if_block.d(1);
@@ -803,27 +688,24 @@ function create_fragment(ctx) {
       if (current) return;
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(copytoclipboard0.$$.fragment, local);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(copytoclipboard1.$$.fragment, local);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(copytoclipboard2.$$.fragment, local);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(qrcode.$$.fragment, local);
       current = true;
     },
     o: function o(local) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_out)(copytoclipboard0.$$.fragment, local);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_out)(copytoclipboard1.$$.fragment, local);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_out)(copytoclipboard2.$$.fragment, local);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_out)(qrcode.$$.fragment, local);
       current = false;
     },
     d: function d(detaching) {
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div4);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div3);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(copytoclipboard0);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(copytoclipboard1);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(copytoclipboard2);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(qrcode);
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t4);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t2);
       if (if_block) if_block.d(detaching);
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t5);
-      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div5);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(t3);
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div4);
     }
   };
 }
@@ -845,6 +727,7 @@ function instance($$self, $$props, $$invalidate) {
 
   var handleSuccessfullyCopied = function handleSuccessfullyCopied(e) {
     alert("successfully copied to clipboard! ".concat(e));
+    console.log(e);
   };
 
   var handleFailedCopy = function handleFailedCopy() {

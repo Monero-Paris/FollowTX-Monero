@@ -12,16 +12,12 @@ body {
   display: flex;
   flex-direction: column;
 }
-.gateway-container .gateway-header img {
-  width: 80px;
-}
 .gateway-container .gateway-body {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 1rem;
 }
 .gateway-container .gateway-body .data {
-  width: 60%;
   word-wrap: break-word;
 }
 .gateway-container .gateway-body .data .kv {
@@ -42,6 +38,9 @@ body {
   padding: 0;
   max-width: 100%;
   font-size: 0.9rem;
+}
+.gateway-container .gateway-body .qrcode-container {
+  margin-top: 1rem;
 }
 .gateway-container .gateway-body .qrcode-container img {
   padding: 10px;
