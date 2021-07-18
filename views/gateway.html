@@ -15,8 +15,8 @@
 
 	<body class="bg-gray-100">
 		{% if invoice %}
-			<script defer src='/js/gateway.js'></script>
 			<script>window.invoice = {{ invoice | dump | safe }}</script>
+			<script defer src='/js/gateway.js'></script>
 		{% else %}
 			No invoice
 		{% endif %}

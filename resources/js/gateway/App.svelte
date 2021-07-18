@@ -1,43 +1,21 @@
 <script>
 	import ioClient from 'socket.io-client'
 	import QrCode from 'svelte-qrcode'
-	import CopyToClipboard from "svelte-copy-to-clipboard";
-	import swal from 'sweetalert'
+	import CopyToClipboard from "svelte-copy-to-clipboard"
+
+	import { Converter } from './helpers'
+	import { handleSuccessfullyCopied, handleFailedCopy, popPayment } from './functions'
 
 	let invoice = window.invoice
-	//payment.status = 'completed'
 
 	// socket io
 	let io = ioClient(`/gateway`, {
 		query: {
-			page: 'gateway',
-			invoice: invoice._id
+			id: invoice._id
 		}
 	})
 
-	io.on('pop', (message) => {
-		invoice.status = 'completed'
-		swal('Payment received', 'thanks you', 'success')
-	})
-
-	const handleSuccessfullyCopied = (e) => {
-		alert(`successfully copied to clipboard! ${e}`)
-		console.log(e)
-	}
-
-	const handleFailedCopy = () => {
-		alert('failed to copy :(');
-	}
-
-	const Converter = {
-		xmrToAtomicUnits(number) {
-			return number * 1_000_000_000_000
-		},
-
-		atomicUnitsToXmr(number) {
-			return (number / 1_000_000_000_000).toFixed(12)
-		}
-	}
+	io.on('pop', (tx_id) => popPayment(tx_id, invoice))
 
 	console.info('invoice id:', invoice._id)
 	console.info('payment id:', invoice.payment_id)
@@ -54,41 +32,40 @@
 	Payment checkout
 </div>
 
-	<CopyToClipboard text="{Converter.atomicUnitsToXmr(invoice.amount)}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-		<div class="m-6 bg-white shadow-md cursor-pointer">
-			<div class="kv my-4" on:click={copy}>
-				<div class="p-3">
-					Amount:
-				</div>
-				<div class="p-3">
-					{Converter.atomicUnitsToXmr(invoice.amount)} XMR
-				</div>
+<CopyToClipboard text="{Converter.atomicUnitsToXmr(invoice.amount)}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
+	<div class="m-6 bg-white shadow-md cursor-pointer transition duration-100 ease-in hover:bg-gray-200">
+		<div class="kv my-4" on:click={copy}>
+			<div class="p-3">
+				Amount:
+			</div>
+			<div class="p-3">
+				{Converter.atomicUnitsToXmr(invoice.amount)} XMR
 			</div>
 		</div>
-	</CopyToClipboard>
+	</div>
+</CopyToClipboard>
 
-	<CopyToClipboard text="{invoice.address}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
-		<div class="m-6 bg-white shadow-md cursor-pointer">
-				<div class="kv" on:click={copy}>
-					<div class="p-3">
-						Address:
-					</div>
-					<div class="p-3 break-words">
-						{invoice.address}
-					</div>
-				</div>
+<CopyToClipboard text="{invoice.address}" on:copy={handleSuccessfullyCopied} on:fail={handleFailedCopy} let:copy>
+	<div class="m-6 bg-white shadow-md cursor-pointer transition duration-100 ease-in hover:bg-gray-200">
+		<div class="kv" on:click={copy}>
+			<div class="p-3">
+				Address:
+			</div>
+			<div class="p-3 break-words">
+				{invoice.address}
+			</div>
 		</div>
-	</CopyToClipboard>
+	</div>
+</CopyToClipboard>
 
-<div class="flex justify-center">
+<div class="m-6 flex justify-between">
 	<QrCode value="{invoice.uri}" padding="10" size="300" background="#ffffff" />
-</div>
-
-
-<div class="flex justify-center my-3">
-	<img src="/img/Monero-Logo.svg" alt="logo" class="logo">
-</div>
-
-<div class="flex justify-center my-3">
-	<img src="/img/logo2.svg" alt="logo" class="logo" style="width: 90px;">
+	<div class="flex items-end">
+		<div>
+			<img src="/img/Monero-Logo.svg" alt="logo" class="logo" style="width: 250px;">
+		</div>
+		<div>
+			<img src="/img/logo2.svg" alt="logo" class="logo" style="width: 90px;">
+		</div>
+	</div>
 </div>
