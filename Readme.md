@@ -9,15 +9,16 @@
 - Nodejs
 - npm
 - Nginx
+- Redis
 - Mongodb
 - RoboT3 (local)
 - Monero (daemon, wallet-rpc)
-
-```bash
-git clone https://github.com/FollowTX/FollowTX-Monero.git
-cd FollowTX-Monero
-npm install
-cp .env.exampple .env
-xdg-open localhost:8080/setup
-```
+  
+        git clone https://github.com/FollowTX/FollowTX-Monero.git
+        cd FollowTX-Monero
+        npm install
+        cp .env.exampple .env
+        nano .env # or vim .env
+        npm run check
+        npm run keys
 
