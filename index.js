@@ -26,17 +26,7 @@ const subscriber = redis.createClient()
 subscriber.subscribe('tx')
 
 subscriber.on('message', (channel, message) => {
-
-	if ( channel !== 'tx') {
-		return
-	}
-
-	console.log('new payment here')
-
-	console.log(channel, message)
-
-	require('./bin/handle').handle(message, io)
-
+	require('./bin/handle').handle(message, io, channel)
 })
 
 

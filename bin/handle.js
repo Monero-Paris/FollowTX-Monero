@@ -4,7 +4,17 @@ const Invoice = require('../models/Invoice')
 require('dotenv').config()
 
 
-exports.handle = async (txid, io) => {
+exports.handle = async (txid, io, channel) => {
+
+    if (! txid) {
+        return false
+    }
+
+    if (channel !== 'tx') {
+        return false
+    }
+
+    console.log('new payment here')
 
     let res
     let data
