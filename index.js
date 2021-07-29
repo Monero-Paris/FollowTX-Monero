@@ -24,6 +24,7 @@ const redis_client = redis.createClient()
 redis_client.on('error', (error) => console.log(error))
 const subscriber = redis.createClient()
 subscriber.subscribe('tx')
+
 subscriber.on('message', (channel, message) => {
 
 	if ( channel !== 'tx') {

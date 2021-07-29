@@ -33,8 +33,7 @@ exports.handle = async (txid, io) => {
     invoice.transactions.push(txid)
     invoice.save()
 
-
-    io.of('/gateway').emit('pop')
+    io.of('/gateway').emit('pop', txid)
 
     console.log('all done')
     console.log(invoice)

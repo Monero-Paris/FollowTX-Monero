@@ -4,7 +4,8 @@ const fs = require('fs')
 
 const jwt = require('jsonwebtoken')
 
-const verifyToken = require('../middleware/veryToken')
+const verifyToken = require('../middleware/verifyToken')
+const jwtVerify = require('../middleware/jwtVerify')
 
 const RPC_Controller = require('../controllers/API/RPC_Controller')
 
@@ -27,6 +28,7 @@ router.post('/login', (request, response) => {
     })
 })
 
+/*
 router.post('/test1', verifyToken, (request, response) => {
     jwt.verify(request.token, fs.readFileSync('storage/keys/private.key'), (error, auth_data) => {
         if (error) {
@@ -37,6 +39,11 @@ router.post('/test1', verifyToken, (request, response) => {
             })
         }
     })
+})
+ */
+
+router.post('/test1', verifyToken, jwtVerify, (request, response) => {
+    response.json(true)
 })
 
 router.post('/rpc', RPC_Controller.fetch)
