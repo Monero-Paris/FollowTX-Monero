@@ -2,18 +2,13 @@ const express = require('express')
 const router = express.Router()
 
 // Load middlewares
-const verifyToken = require('../middleware/verifyToken')
-const jwtVerify = require('../middleware/jwtVerify')
+const { verifyToken, jwtVerify } = require('../middleware/JWT')
 
 // Load controllers
-const RPC_Controller = require('../controllers/API/RPC_Controller')
-
-const InvoicesController = require('../controllers/API/InvoicesController')
 const LoginController = require('../controllers/API/LoginController')
+const InvoicesController = require('../controllers/API/InvoicesController')
 
 router.post('/login', LoginController.login)
-
-router.post('/rpc', RPC_Controller.fetch)
 
 router.get('/invoices', verifyToken, jwtVerify, InvoicesController.index)
 router.post('/invoices', verifyToken, jwtVerify, InvoicesController.store)
