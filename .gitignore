@@ -1,3 +1,5 @@
 node_modules
 .env
 .idea
+public/css/app.css
+public/js/gateway.js
